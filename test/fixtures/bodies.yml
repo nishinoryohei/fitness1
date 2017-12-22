@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 9.99
+  height: 9.99
+  bmi: 9.99
+  score: 1
+
+two:
+  weight: 9.99
+  height: 9.99
+  bmi: 9.99
+  score: 1

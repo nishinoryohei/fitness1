@@ -1,0 +1,49 @@
+$('#body-form').html("<%= j (render 'form') %>");
+$('#body-form').slideDown(800);
+
+ function weightNum(obj){
+ 	var weight =obj.value;
+ 	console.log(weight);
+ };
+ function heightNum(obj){
+ 	var height =obj.value;
+ 	console.log(height);
+ };
+
+document.getElementById('btn').addEventListener('click', function(){
+	var weight = document.getElementById('weight');
+	var height = document.getElementById('height');
+	var bmiNum = bmiCalculator(weight,height); 
+	var bmi =  document.getElementById('bmi');
+	bmi.textContent =Math.round(bmiNum*10)/10;
+	setParamsForRails(body_weight, weight.value);
+	setParamsForRails(body_height, height.value);
+	setParamsForRails(body_bmi, Math.round(bmiNum*10)/10);
+	var result = scoreCheck('score');
+	setParamsForRails(body_score, result)
+	var submit = document.getElementById('body-submit');
+	submit.style.display = 'block';
+}, false);
+
+var setParamsForRails = function(params, num){
+	var params = params
+	params.value = num;
+};
+var scoreCheck = function(score){
+	var result = 0
+	var scores = document.getElementsByName(score);
+	for(var i = 0, len = scores.length; i < len; i++){
+		var score = scores.item(i);
+		if(score.checked){
+			result += parseInt(score.value);
+		} 
+	};
+	return result;
+};
+var bmiCalculator = function(weight,height){
+	var bmiNum = weight.value/(Math.pow(height.value/100,2));
+	if (isNaN(bmiNum)) {
+		bmiNum = 0
+	};
+	return bmiNum;
+};

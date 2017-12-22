@@ -1,0 +1,2 @@
+class AddStatusToUser < ApplicationRecord
+end
