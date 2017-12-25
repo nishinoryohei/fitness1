@@ -1,0 +1,31 @@
+<form>
+	<div>
+		<label><input type="checkbox" name="muscle" value="1">上体起こし15~20回×３セット</label>
+		<label><input type="checkbox" name="muscle" value="2">腕立て伏せ10回×3セット</label>
+		<label><input type="checkbox" name="muscle" value="2">スクワット10回×3セット</label>
+	</div>
+	<div>
+		<label><input type="checkbox" name="aerobic" value="1">ウオーキング30分</label>
+		<label><input type="checkbox" name="aerobic" value="2">ジョギング30分</label>
+		<label><input type="checkbox" name="aerobic" value="3">ランニング30分</label>
+	</div>
+	<div>
+		<label><input type="radio" name="calorie" value="1">2300kcal</label>
+		<label><input type="radio" name="calorie" value="2">2000kcal</label>
+		<label><input type="radio" name="calorie" value="3">180000kcal</label>
+		<label><input type="radio" name="calorie" value="4">15000kcal</label>
+	</div>
+	<div>
+		<input type="button" name="btn" id="btn" value="ポイントを出す">
+	</div>
+</form>
+<div>あなたの目標ポイントは<span id="point"><</span>です</div>
+<%= form_for(@last_training,url: :user_trainings, remote: true, method: :patch) do |f| %>
+	<%= f.hidden_field :progress %>
+	<%= f.submit '確認して送信する', id: 'training-submit'%>
+<% end %>
+<style type="text/css">
+	#training-submit{
+		display: none;
+	}
+</style>

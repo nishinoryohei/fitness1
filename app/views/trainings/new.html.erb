@@ -1,0 +1,15 @@
+<h1>トレーニング</h1>
+<% if once_a_day?(@user.trainings) %>
+	<% if training_reported? @user %>
+		<%= link_to '今日の目標', new_user_trainings_path, remote: true %>
+	<% else %>
+		<%= link_to 'トレーニング報告', edit_user_trainings_path, remote: true %>
+	<% end %>
+<% else %>
+	今日も一日頑張りましょう
+<% end %>
+<div>前回の結果<%= training_evaluation %></div>
+<div id="training-form"></div>
+<div id="training-update"></div>
+<%= training_chart %>
+

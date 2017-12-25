@@ -8,14 +8,12 @@ class BodiesController < ApplicationController
 	end
 	def create
 		@body = Body.new(body_params)
-		respond_to do |format|
 		@body.user_id = current_user.id
-			if @body.save
-				user_bmi_evaluation
-				redirect_to user_path(current_user)
-			else
-				format.js { render :new }
-			end
+		if @body.save
+			user_bmi_evaluation
+			redirect_to user_path(current_user.id)
+		else
+			render 'new.js'
 		end
 	end
 	private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220070054) do
+ActiveRecord::Schema.define(version: 20171222050517) do
 
   create_table "bodies", force: :cascade do |t|
     t.decimal "weight", precision: 3, scale: 1
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20171220070054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer "progress", default: 0
+    t.integer "goal", default: 0
+    t.boolean "fruition", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

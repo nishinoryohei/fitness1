@@ -3,7 +3,9 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
       }
-  resources :users 
+  resources :users do
+  	 resource :trainings, only:[:new,:create,:update,:edit]
+  end
   resources :bodies
   root 'users#show'
 

@@ -1,0 +1,31 @@
+$('#training-form').html("<%= j (render 'form') %>");
+$('#training-form').slideDown(800);
+
+document.getElementById('btn').addEventListener('click', function(){
+	var result = scoreCheck('muscle');
+	result += scoreCheck('aerobic');
+	result += scoreCheck('calorie');
+    console.log(result);
+    setParamsForRails(training_goal, result)
+    var point = document.getElementById('point')
+    point.textContent = result
+    var submit = document.getElementById('training-submit');
+	submit.style.display = 'block';
+},false);
+
+var scoreCheck = function(score){
+	var result = 0
+	var scores = document.getElementsByName(score);
+	for(var i = 0, len = scores.length; i < len; i++){
+		var score = scores.item(i);
+		if(score.checked){
+			result += parseInt(score.value);
+		} 
+	};
+	return result;
+};
+
+var setParamsForRails = function(params, num){
+	var params = params
+	params.value = num;
+};

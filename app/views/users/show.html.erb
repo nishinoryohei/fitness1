@@ -1,32 +1,11 @@
 <h1>ようこそ<%= @user.name %> さん</h1>
-<% case @user.status %>
-<% when 1 %>
-	ガリガリだな
-<% when 2 %>
-	標準レベル、この調子で頑張って
-<% when 3 %>
-	若干太り気味
-<% when 4 %>
-	ぽっちゃり、軽くヤバい
-<% when 5 %>
-	デブです
-<% when 6 %>
-	養豚場送り
-<% end %>
-<% case @user.bodies.last.score%>
-<% when 0..2 %>
-	生活習慣悪すぎ
-<% when 3..5 %>
-	自分の生活を少し見直してみましょう
-<% when 6..8 %>
-	なかなか生活習慣はいい感じです
-<% when 9 %>
-	パーフェクト、この調子で維持しましょう
-<% end %>
+<%= figure %>
+<%= lifestyle %>
 <% if once_a_day? @user.bodies %>
 	<%= link_to 'データを入力する', new_body_path, remote:true %>
 <% else %>
 	<div>すでに入力してあります、また明日入力してください</div>
+	<%= link_to 'トレーニング', new_user_trainings_path(current_user) %>
 <% end %>
 <div id='body-form'></div>
 <%= link_to 'データを入力する', new_body_path, remote:true %>
