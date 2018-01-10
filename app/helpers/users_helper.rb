@@ -16,7 +16,7 @@ module UsersHelper
  		end 
  	end
  	def lifestyle
-		case @user.bodies.last.score
+		@user.bodies.empty? ? '' : case @user.bodies.last.score	
  			when 0..2 
 				'生活習慣悪すぎ'
  			when 3..5 

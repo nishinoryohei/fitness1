@@ -46,5 +46,6 @@ class TrainingsController < ApplicationController
 	def chart_data
 		@goal_chart = Training.chart_goal(current_user.id)
 		@progress_chart = Training.chart_progress(current_user.id)
+		#chart_goal,chart_progressメソッドはtraining.rbに記載
 	end
 end

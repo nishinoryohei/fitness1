@@ -1,0 +1,15 @@
+<%= link_to 'コメント' , new_comment_path, remote:true %>
+<div id="comment-form"></div>
+<% @talk.each do |c| %>
+	<% if c.server_id == @user.id %>
+		<div id="serve">
+			<%= @user.name %>
+			<%= c.content %>		
+		</div>
+	<% else %>
+		<div id="receive">
+			<%= current_user.name %>
+			<%= c.content %>		
+		</div>
+	<% end %>
+<% end %>

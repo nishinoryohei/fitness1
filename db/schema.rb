@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222050517) do
+ActiveRecord::Schema.define(version: 20171226042730) do
 
   create_table "bodies", force: :cascade do |t|
     t.decimal "weight", precision: 3, scale: 1
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20171222050517) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "receiver_id"
+    t.integer "server_id"
   end
 
   create_table "trainings", force: :cascade do |t|
@@ -46,6 +54,7 @@ ActiveRecord::Schema.define(version: 20171222050517) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "status"
+    t.boolean "trainer", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

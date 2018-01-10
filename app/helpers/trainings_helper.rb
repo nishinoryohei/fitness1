@@ -9,7 +9,7 @@ module TrainingsHelper
 		]
 	end
 	def training_evaluation
-		if @user.trainings[-2].fruition == false
+		if @user.trainings[-2].nil? ||  @user.trainings[-2].fruition == false
 			'失敗'
 		else
 			'目標達成！'

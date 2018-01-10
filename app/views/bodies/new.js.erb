@@ -1,5 +1,11 @@
 $('#body-form').html("<%= j (render 'form') %>");
-$('#body-form').slideDown(800);
+// $('#content').slideDown(800);
+$("#content").fadeIn("slow");
+
+
+document.getElementById('back').addEventListener('click', function(){
+ 	$('#content').slideUp("slow");
+}, false);
 
  function weightNum(obj){
  	var weight =obj.value;

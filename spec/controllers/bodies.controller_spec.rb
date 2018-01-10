@@ -9,6 +9,7 @@ RSpec.describe BodiesController, type: :controller do
 		before do
 			get :new, xhr: true
 		end
+		render_views
 		it 'リクエストは200になること' do
 			expect(response.status).to eq 200
 		end
@@ -17,6 +18,9 @@ RSpec.describe BodiesController, type: :controller do
 		end
 		it '@bodyにパラメータを割り当てること' do
 			expect(assigns(:body)).to be_a_new(Body)
+		end
+		it '_form.htmlを表示すること' do
+			expect(response).to render_template(partial: '_form')
 		end
 	end
 	describe 'POST#create' do

@@ -12,8 +12,8 @@
 	<div>
 		<label><input type="radio" name="calorie" value="1">2300kcal</label>
 		<label><input type="radio" name="calorie" value="2">2000kcal</label>
-		<label><input type="radio" name="calorie" value="3">180000kcal</label>
-		<label><input type="radio" name="calorie" value="4">15000kcal</label>
+		<label><input type="radio" name="calorie" value="3">1800kcal</label>
+		<label><input type="radio" name="calorie" value="4">1500kcal</label>
 	</div>
 	<div>
 		<input type="button" name="btn" id="btn" value="ポイントを出す">
@@ -24,6 +24,7 @@
 	<%= f.hidden_field :goal %>
 	<%= f.submit '確認して送信する', id: 'training-submit'%>
 <% end %>
+<button id="back">閉じる</button>
 <style type="text/css">
 	#training-submit{
 		display: none;

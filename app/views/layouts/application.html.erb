@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <head>
+        <% if user_signed_in? %>
+      <ul class="header-nav">
+        <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path,method: :delete %>|</li>
+      </ul>
+    <% else %>
+      <ul class="header-nav">
+        <li class="header-list"><%= link_to '新規登録', new_user_registration_path %>|</li>
+        <li class="header-list"><%= link_to 'ログイン', new_user_session_path %></li>
+      </ul>
+    <% end %>
+      
+    </head>
     <%= yield %>
   </body>
 </html>

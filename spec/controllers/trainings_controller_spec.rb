@@ -35,9 +35,9 @@ RSpec.describe TrainingsController, type: :controller do
 		context '有効なパラメータの場合' do
 			before do
 				@training = attributes_for(:training)
+				post :create, params:{ user_id: 1, training: @training }
 			end
 			it 'saveしてuser/showページにリダイレクトする' do
-				post :create, params:{ user_id: 1, training: @training }
 				expect(response).to redirect_to user_path(id: 1)
 			end
 			it 'データベースに登録されること' do
@@ -49,9 +49,9 @@ RSpec.describe TrainingsController, type: :controller do
 		context '無効なパラメータの場合' do
 			before do
 				@invalid_training = attributes_for(:invalid_training)
+				post :create, params:{ user_id: 1, training: @invalid_training }
 			end
 			it 'new.jsにrenderすること' do
-				post :create, params:{ user_id: 1, training: @invalid_training }
 				expect(response).to render_template 'new.js'
 			end
 			it 'データベースに登録されないこと' do
@@ -86,7 +86,7 @@ RSpec.describe TrainingsController, type: :controller do
 				expect(response).to redirect_to user_path(id: 1)
 			end
 			it 'データベースが更新されること' do
-				expect(Training.first.goal).to eq 1
+				expect(Training.last.goal).to eq 1
 			end
 		end
 		context '無効なパラメータの場合' do

@@ -1,0 +1,11 @@
+$('#comment-form').html("<%= j (render 'form') %>");
+$(this).blur() ;
+$("body").append('<div id="modal-overlay"></div>');
+$("#modal-overlay").fadeIn("slow");
+$("#modal-content").fadeIn("slow");
+$("#modal-overlay").unbind().click(function(){
+	$("#modal-content,#modal-overlay").fadeOut("slow",function(){
+	$("#modal-overlay").remove();
+	});
+});
+

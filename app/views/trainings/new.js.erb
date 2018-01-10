@@ -1,6 +1,8 @@
 $('#training-form').html("<%= j (render 'form') %>");
 $('#training-form').slideDown(800);
 
+
+
 document.getElementById('btn').addEventListener('click', function(){
 	var result = scoreCheck('muscle');
 	result += scoreCheck('aerobic');
