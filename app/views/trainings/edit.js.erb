@@ -5,7 +5,6 @@ document.getElementById('btn').addEventListener('click', function(){
 	var result = scoreCheck('muscle');
 	result += scoreCheck('aerobic');
 	result += scoreCheck('calorie');
-    console.log(result);
     setParamsForRails(training_progress, result)
     var point = document.getElementById('point')
     point.textContent = result

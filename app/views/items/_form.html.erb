@@ -1,0 +1,65 @@
+<div id="mod-overlay"></div>
+<div id="mod-content">
+	<h1>ステップ２</h1>
+	<label><input type="radio" name="genre" value='food' 
+		onclick="subForm()">食品</label>
+	<label><input type="radio" name="genre" value='equipment' 
+		onclick="subForm()">器具</label>
+	<label><input type="radio" name="genre" value='clothes' 
+		onclick="subForm()">洋服</label>
+	<label><input type="radio" name="genre" value='other' 
+		onclick="subForm()">その他</label>
+<div id="sub-form-food">
+	食品：
+	<label><input type="radio" name="genre" value='supplement'>サプリメント</label>
+	<label><input type="radio" name="genre" value='protein'>プロテイン</label>
+	<label><input type="radio" name="genre" value='diet'>ダイエット食品</label>
+	<label><input type="radio" name="genre" value='drink'>ドリンク</label>
+	<a onclick="unForm('food')">↑</a>
+</div>
+
+<div id="sub-form-equipment">
+	器具：
+	<label><input type="radio" name="genre" value='muscle'>筋トレ</label>
+	<label><input type="radio" name="genre" value='beauty'>美容</label>
+	<label><input type="radio" name="genre" value='health'>健康</label>
+	<label><input type="radio" name="genre" value='life'>生活</label>
+	<a onclick="unForm('equipment')">↑</a>
+</div>
+
+<div id="sub-form-clothes">
+	洋服：
+	<label><input type="radio" name="genre" value='female'>女性</label>
+	<label><input type="radio" name="genre" value='man'>男性</label>
+	<label><input type="radio" name="genre" value='children'>子供</label>
+	<label><input type="radio" name="genre" value='big'>ビッグサイズ</label>
+	<a onclick="unForm('clothes')">↑</a>
+</div>
+
+<div id="sub-form-other">
+	その他：
+	<label><input type="radio" name="genre" value='ticket'>チケット</label>
+	<label><input type="radio" name="genre" value='service'>サービス</label>
+	<label><input type="radio" name="genre" value='guidance'>施設</label>
+	<label><input type="radio" name="genre" value='gym'>ジム</label>
+	<a onclick="unForm('other')">↑</a>
+</div>
+	<%= form_for(@category,remote: true) do |f| %>
+	<p>キーワード検索</p>
+		<%= f.text_area :keyword, placeholder: '(例）痩せる、筋トレ、体力' %>
+		<%= f.hidden_field :item_id, value: @id %>
+		<%= f.hidden_field :genre %>
+		<div id="c-submit">
+		<%= f.submit 'ステップ３へ', id: 'category-submit' %>
+	</div>
+	<% end %>
+</div>
+<div id="thumbnail-form"></div>
+<style type="text/css">
+	#sub-form-food,
+	#sub-form-equipment,
+	#sub-form-clothes,
+	#sub-form-other{
+		display: none;
+	}
+</style>

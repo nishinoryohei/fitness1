@@ -8,6 +8,9 @@ Rails.application.routes.draw do
      get :inbox, on: :member
      get :inbox_show, on: :member
   end
+  resources :items
+  resources :categories
+  resources :thumbnails
   resources :bodies
   resources :comments,only:[:new,:create]
   root 'users#show'

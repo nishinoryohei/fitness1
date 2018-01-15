@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226042730) do
+ActiveRecord::Schema.define(version: 20180113050328) do
 
   create_table "bodies", force: :cascade do |t|
     t.decimal "weight", precision: 3, scale: 1
@@ -22,12 +22,46 @@ ActiveRecord::Schema.define(version: 20171226042730) do
     t.string "user_id"
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+    t.integer "quantity", default: 0
+    t.boolean "is_purchase", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "genre"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "keyword"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "receiver_id"
     t.integer "server_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.integer "user_id"
+    t.integer "stock"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "thumbnails", force: :cascade do |t|
+    t.string "image"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trainings", force: :cascade do |t|

@@ -1,0 +1,9 @@
+<div id="modal-overlay"></div>
+<div id="modal-content">
+	<h1>ステップ３</h1>
+	<%= form_for(@thumbnail) do |f| %>
+		<%= f.file_field :image %>
+		<%= f.hidden_field :item_id, value: @id %>
+		<%= f.submit '出品' %>
+	<% end %>
+</div>

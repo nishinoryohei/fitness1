@@ -1,6 +1,13 @@
 $('#body-form').html("<%= j (render 'form') %>");
-// $('#content').slideDown(800);
-$("#content").fadeIn("slow");
+$(this).blur() ;
+$("body").append('<div id="modal-overlay"></div>');
+$("#modal-overlay").fadeIn("slow");
+$("#modal-content").fadeIn("slow");
+$("#modal-overlay").unbind().click(function(){
+	$("#modal-content,#modal-overlay").fadeOut("slow",function(){
+	$("#modal-overlay").remove();
+	});
+});
 
 
 document.getElementById('back').addEventListener('click', function(){
@@ -21,7 +28,7 @@ document.getElementById('btn').addEventListener('click', function(){
 	var height = document.getElementById('height');
 	var bmiNum = bmiCalculator(weight,height); 
 	var bmi =  document.getElementById('bmi');
-	bmi.textContent =Math.round(bmiNum*10)/10;
+	bmi.textContent = Math.round(bmiNum*10)/10;
 	setParamsForRails(body_weight, weight.value);
 	setParamsForRails(body_height, height.value);
 	setParamsForRails(body_bmi, Math.round(bmiNum*10)/10);

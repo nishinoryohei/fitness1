@@ -1,0 +1,40 @@
+$('#category-form').html("<%= j (render 'form') %>");
+$(this).blur() ;
+// $("body").append('<div id="mod-overlay"></div>');
+$("#mod-overlay").fadeIn("slow");
+$("#mod-content").fadeIn("slow");
+$("#category-submit").unbind().click(function(){
+	$("#mod-content,#mod-overlay").fadeOut("slow",function(){
+	$("#mod-overlay").remove();
+	});
+});
+
+document.getElementById('c-submit').addEventListener('click', function(){
+	var value = getRadioValue('genre');
+ 	setParamsForRails(category_genre,value);
+}, false);
+
+function unForm(genre){
+	document.getElementById('sub-form-' + genre).style.display = 'none';
+};
+
+function subForm(){
+ 	var mainCategory = getRadioValue('genre');
+ 	$('#sub-form-' + mainCategory).slideDown();
+ };
+var getRadioValue = function(name){
+	var result = '';
+	var elems = document.getElementsByName(name);
+	for(var i = 0, len = elems.length; i < len; i++) {
+		var elem = elems.item(i);
+		if (elem.checked){
+			result = elem.value;
+			break;
+		}
+	};
+	return result;
+};
+var setParamsForRails = function(params, num){
+	var params = params
+	params.value = num;
+};

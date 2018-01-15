@@ -1,0 +1,10 @@
+<h1>出品</h1>
+<%= form_for(@item, remote: true) do |f| %>
+	<%= f.text_field :name, placeholder: '商品名' %>
+	<%= f.text_area :description, placeholder: '商品説明' %>
+	<%= f.text_field :price, placeholder: '価格' %>
+	<%= text_field :stock, placeholder: '個数' %>
+	<%= f.submit 'ステップ２へ' %>
+<% end %>
+<div id="category-form"></div>
+<div id="thumbnails-form"></div>

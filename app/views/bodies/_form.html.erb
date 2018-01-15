@@ -1,3 +1,5 @@
+<div id="modal-overlay"></div>
+<div id="modal-content">
 <form id="content">
 	<div>
 		<label for='height'>身長：</label>
@@ -33,6 +35,7 @@
 	<%= f.hidden_field :score %>
 	<%= f.submit '確認して送信する', id: 'body-submit'%>
 <% end %>
+</div>
 
 <style type="text/css">
 	#body-submit{
