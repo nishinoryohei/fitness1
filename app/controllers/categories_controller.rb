@@ -1,14 +1,17 @@
 class CategoriesController < ApplicationController
+	before_action :trainer_only, only:[:create]
 	def create
 		@category = Category.new(category_params)
-		respond_to do |format|
-			if @category.save
-				@thumbnail = Thumbnail.new
-				@id = @category.item_id
+		if @category.save
+			@thumbnail = Thumbnail.new
+			@id = @category.item_id
+			respond_to do |format|
 				format.js
-	    	else
-	    		redirect_to new_item_path
 			end
+	   	else
+	   		@item = Item.first
+	   		@item.delete
+	   		redirect_to new_item_path
 		end
 	end
 	private

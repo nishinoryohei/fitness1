@@ -1,21 +1,22 @@
 class ItemsController < ApplicationController
+	before_action :sold_out, only:[:show]
 	before_action :set_item, only:[:show,:edit,:update,:destroy]
+	before_action :trainer_only, only:[:new,:create,:update,:destroy]
 	def new
 		@item = Item.new
-		@item.build_category
 	end
 	def create
 		@item = Item.new(item_params)
 		@item.user_id = current_user.id
-		respond_to do |format|
-			if @item.save
-				@category = Category.new
-			 	 @id = @item.id
+		if @item.save
+			@category = Category.new
+		 	@id = @item.id
+		 	respond_to do |format|
 				format.html
 				format.js
-			else
-				render :new
 			end
+		else
+			redirect_to new_item_path
 		end
 	end
 	def index 
@@ -27,18 +28,32 @@ class ItemsController < ApplicationController
 
 	end
 	def show
-	end
-	def edit
+		ids = @item.cart_items.map(&:user_id)
+		@users = User.where(id: ids)
+		@cart_item = CartItem.new
 	end
 	def update
+		if @item.update(item_params)
+			redirect_to user_path(current_user)
+		else
+			redirect_to item_path(@item)
+		end
 	end
 	def destroy
+		@item.delete
+		redirect_to user_path(current_user)
 	end
 	private
 	def set_item
 		@item = Item.find(params[:id])
 	end
 	def item_params
-		params.require(:item).permit(:name,:description,:price)
+		params.require(:item).permit(:name,:description,:price,:stock)
+	end
+	def sold_out
+		set_item
+		if @item.stock == 0 && current_user.trainer == false
+			redirect_to items_path
+		end
 	end
 end

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bodies
   has_many :trainings
+  has_many :items
+  has_many :cart_items
   has_many :server, foreign_key: 'server_id', 
             class_name: 'Comment', dependent: :destroy
   has_many :receiver, foreign_key: 'receiver_id',

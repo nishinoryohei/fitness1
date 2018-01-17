@@ -1,0 +1,15 @@
+<%= form_for(@item,method: :patch) do |f| %>
+	<%= f.text_area :description %>
+	<%= f.number_field :stock %>
+	<%= f.submit %>
+<% end %>
+<%= link_to '削除する', item_path(@item), method: :delete %> 
+＜購入履歴＞
+<%  @item.cart_items.each do |cart| %>
+	<div>
+	<%= cart.quantity %>個
+	<%= cart.quantity * @item.price %>円
+	<%= User.find(cart.user_id).name %>
+	<%= cart.created_at %>
+	</div>
+<% end %>

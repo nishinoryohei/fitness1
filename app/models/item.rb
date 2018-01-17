@@ -1,8 +1,13 @@
 class Item < ApplicationRecord
+	validates :name, presence: true
+	validates :description, presence: true
+	validates :price, presence: true
 	default_scope -> {order(created_at: :desc)}
 	belongs_to :user
-	has_one :category
-	scope :join_category, -> {joins(:category)}
+	has_one :category, dependent: :delete
+	has_many :thumbnailes, dependent: :destroy
+	has_many :cart_items
+	# scope :join_category, -> {joins(:category)}
 	scope :cheaper, -> (price){
 		unless price.nil?
 			where(Item.arel_table[:price].lteq(price))

@@ -1,7 +1,16 @@
 <h1>詳細ページ</h1>
 <div>
 <h2><%= @item.name %></h2>
-<%= @item.description %>
-:価格
-<%= @item.price %>
-</div>
+<% if current_user.trainer == true %>
+	<%= render 'trainer' %>
+<% else %>
+	<%= @item.description %>
+	:価格
+	<%= @item.price %>
+	在庫：
+	<%= @item.stock %>
+	<%= form_for(@cart_item, url:item_cart_items_create_path(@item)) do |f| %>
+		<%= f.number_field :quantity,max: @item.stock, min:0 %>
+		<%= f.submit 'カートに入れる' %>
+	<% end %>
+<% end %>

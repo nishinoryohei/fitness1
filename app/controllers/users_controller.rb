@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find(current_user.id)
+		item_ids = @user.cart_items.map(&:item_id)
+		@items = Item.where(id: item_ids)
 	end
 	def inbox
 		@user = User.find(current_user.id)

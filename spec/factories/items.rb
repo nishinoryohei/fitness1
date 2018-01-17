@@ -1,8 +1,14 @@
 FactoryBot.define do
-  factory :item do
+  factory :item, class: Item do
     name "MyString"
     description "MyText"
-    price 1
-    user_id 1
+    price 1000
+    user_id 2
+  end
+  factory :invalid_item, class: Item do
+  	name nil
+    description 123
+    price '1000'
+    user_id 2
   end
 end

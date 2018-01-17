@@ -1,6 +1,12 @@
 FactoryBot.define do
-  factory :category do
-    genre 1
-    size 1
+  factory :category, class: Category do
+  	item_id 1
+    genre 'food'
+    keyword 'test'
+  end
+  factory :invalid_category, class: Category do
+  	item_id 1
+  	genre nil
+  	keyword 123
   end
 end

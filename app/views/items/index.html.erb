@@ -16,6 +16,7 @@
 	<%= form.submit '検索' %>
 <% end %>
 <% @items.each do |item| %>
+	<% unless sold_out? item %>
 	<div>
 	<%= link_to item.name, item_path(item) %>
 	<%= item.description %>
@@ -24,6 +25,9 @@
 	<%= item.category.genre %>
 	<%= item.category.keyword %>
 	</div>
+	<% else %>
+	<div>売り切れ</div>
+	<% end %>
 <% end %>
 <%= paginate @items %>
 <style type="text/css">

@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-	belongs_to :item
+	validates :genre, presence: true
+	belongs_to :item, dependent: :delete
 	enum genre:{
 		food: 1, equipment:2, clothes:3, other:4,
 		supplement:11, protein:21, diet:31, drink:41,

@@ -8,9 +8,13 @@ Rails.application.routes.draw do
      get :inbox, on: :member
      get :inbox_show, on: :member
   end
-  resources :items
-  resources :categories
-  resources :thumbnails
+  resources :items do
+    post 'cart_items/create'
+    delete 'cart_items/destroy'
+  end
+  resources :categories, only:[:create]
+  resources :thumbnails, only:[:create]
+  resources :cart_items
   resources :bodies
   resources :comments,only:[:new,:create]
   root 'users#show'

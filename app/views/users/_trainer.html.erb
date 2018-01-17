@@ -1,4 +1,17 @@
 <%= link_to '受信BOX', inbox_user_path(current_user) %>
-<%= link_to 'コメント' , new_comment_path, remote:true %>
-<div id="comment-form"></div>
+<%= link_to 'アイテム一覧', items_path %>
 <%= link_to '出品', new_item_path %>
+<% @user.items.includes(:category).each do |item| %>
+	<div>
+	<%= link_to item.name, item_path(item) %>
+	<%= item.description %>
+	<%= item.price %>
+	<% unless sold_out? item %>
+		<%= item.stock %>
+	<% else %>
+		完売!
+	<% end %>
+	<%= item.category.genre %>
+	<%= item.category.keyword %>
+    </div>
+<% end %>
