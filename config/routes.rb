@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :categories, only:[:create]
   resources :thumbnails, only:[:create]
   resources :cart_items
+  resources :orders 
+  post 'orders/pay'
   resources :bodies
   resources :comments,only:[:new,:create]
   root 'users#show'

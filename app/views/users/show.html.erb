@@ -16,7 +16,7 @@
 	<%= link_to '受信BOX', inbox_user_path(current_user) %>
 	<%= link_to 'アイテム一覧', items_path %>
 	</div>
-	<% @items.each do |item| %>
+	<% @cart_in_items.each do |item| %>
 		<div>
 		<%= item.name %>
 		<%= purchase_number item %>個
@@ -25,5 +25,6 @@
 		</div>
 	<% end %>
 	合計<%= user_item_total_fee @user %>円
+	<%= link_to '購入ページへ', new_order_path %>
 <% end %>
  

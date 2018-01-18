@@ -7,7 +7,7 @@ module UsersHelper
 				nil.to_i
 			end
 		}.sum
-	end
+	end 
 	def figure
 		case @user.status 
  			when 1 
