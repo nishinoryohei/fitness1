@@ -1,0 +1,18 @@
+<% if current_user.personal.blank? %>
+	<%= form_for(@personal) do |f| %>
+		<div>
+		<%= f.collection_select :state, JpPrefecture::Prefecture.all, :code, :name %>
+		<%= f.text_field :city, placeholder: '市区町村'%>
+		<%= f.text_field :address, placeholder: '丁目、番地' %>
+		<%= f.text_field :tel, placeholder: 'TEL:〇〇〇ー〇〇〇〇ー〇〇〇〇(間にハイフンを入れてください）'%>
+		</div>
+		<%= f.submit '購入' %>
+	<% end %>
+<% else %>	
+	<h1>支払い</h1>
+	<%= link_to '※住所、電話番号変更', edit_personal_path(current_user.personal.id) %>
+	<%= link_to '銀行振込', orders_path, method: :podt %>
+	<%= form_tag('orders/pay', method: :post) do %>
+   	<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_939c3cb277d12b7925cae1ab"></script>
+	<% end %>
+<% end %>

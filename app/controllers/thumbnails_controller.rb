@@ -1,5 +1,5 @@
 class ThumbnailsController < ApplicationController
-	before_action :trainer_only, only:[:create]
+	before_action :trainer_only
 	def create
 		@thumbnail = Thumbnail.new(thumbnail_params)
 		if @thumbnail.save

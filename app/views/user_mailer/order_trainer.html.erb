@@ -1,0 +1,10 @@
+商品が購入されました
+
+<%= @user.name %>
+
+
+<% @items.each do |item| %>
+	<%= item.name %>
+	<%= item.description %>
+	<%= item.price %>
+<% end %>

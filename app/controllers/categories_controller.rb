@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-	before_action :trainer_only, only:[:create]
+	before_action :trainer_only
 	def create
 		@category = Category.new(category_params)
 		if @category.save

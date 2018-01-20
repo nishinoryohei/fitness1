@@ -28,9 +28,14 @@ class ItemsController < ApplicationController
 
 	end
 	def show
+		#--trainer--
 		ids = @item.cart_items.map(&:user_id)
 		@users = User.where(id: ids)
+		#--customer--
 		@cart_item = CartItem.new
+		@review = Review.new
+		@reviews = Review.where(item_id: @item.id)
+
 	end
 	def update
 		if @item.update(item_params)

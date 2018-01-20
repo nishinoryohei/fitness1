@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find(current_user.id)
-		item_ids = @user.cart_items.map{|f|
-			if f.is_purchase == true
-				f.item_id
-			end
-		 }
+		#--trainer--
+		@exhibit_item = Item.where(user_id: @user.id).page(params[:page]).per(15).includes(:category)
+		@still_payment_orders = Order.where(payment_status: false)
+		#--customer--
+		item_ids = CartItem.current_cart_in_item_id @user.id
 		@cart_in_items = Item.where(id: item_ids)
+		@weight_chart = Body.chart_weight(@user.id).reverse
 	end
 	def inbox
 		@user = User.find(current_user.id)

@@ -1,4 +1,7 @@
 Rails.application.configure do
+   config.action_mailer.delivery_method = :letter_opener_web
+  host = 'localhost:3000'                     # ローカル環境
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

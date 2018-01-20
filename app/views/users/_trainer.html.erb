@@ -1,7 +1,7 @@
 <%= link_to '受信BOX', inbox_user_path(current_user) %>
 <%= link_to 'アイテム一覧', items_path %>
 <%= link_to '出品', new_item_path %>
-<% @user.items.includes(:category).each do |item| %>
+<% @exhibit_item.each do |item| %>
 	<div>
 	<%= link_to item.name, item_path(item) %>
 	<%= item.description %>
@@ -15,3 +15,13 @@
 	<%= item.category.keyword %>
     </div>
 <% end %>
+:未入金の注文
+<% @still_payment_orders.each do |order| %>
+	<div>
+	<%= User.find(order.user_id).name %>
+	<%= order.total_fee %>円
+	<%= order.created_at %>
+	<%= link_to '入金を確認', order_path(order.id),method: :patch %>
+    </div>
+<% end %>
+<%= paginate @exhibit_item %>

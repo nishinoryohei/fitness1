@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
+	default_scope -> {order(created_at: :desc)}
+	belongs_to :user
 	validates :name, presence: true
 	validates :description, presence: true
 	validates :price, presence: true
-	default_scope -> {order(created_at: :desc)}
-	belongs_to :user
 	has_one :category, dependent: :delete
 	has_many :thumbnailes, dependent: :destroy
 	has_many :cart_items
+	has_many :reviews
 	# scope :join_category, -> {joins(:category)}
 	scope :cheaper, -> (price){
 		unless price.nil?

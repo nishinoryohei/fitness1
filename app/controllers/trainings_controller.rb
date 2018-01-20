@@ -44,8 +44,8 @@ class TrainingsController < ApplicationController
 		@last_training = Training.where(user_id: current_user.id).last
 	end
 	def chart_data
-		@goal_chart = Training.chart_goal(current_user.id)
-		@progress_chart = Training.chart_progress(current_user.id)
+		@goal_chart = Training.chart_goal(current_user.id).reverse
+		@progress_chart = Training.chart_progress(current_user.id).reverse
 		#chart_goal,chart_progressメソッドはtraining.rbに記載
 	end
 end

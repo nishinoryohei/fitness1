@@ -7,7 +7,7 @@ class CartItemsController < ApplicationController
 		if @cart_item.save
 			item = Item.find(params[:item_id])
 			item.update(stock: item.stock - @cart_item.quantity)
-			redirect_to user_path(current_user)
+			redirect_to root_path
 		else
 			redirect_to item_path(params[:item_id])
 		end
@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
 		item = Item.find(params[:item_id])
 		item.update(stock: item.stock + @cart_item.map{|f| f.quantity}.sum)
 		@cart_item.delete_all
-		redirect_to user_path(current_user)
+		redirect_to root_path
 	end
 	private
 	def cart_item_params

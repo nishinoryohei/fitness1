@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117092124) do
+ActiveRecord::Schema.define(version: 20180120034009) do
 
   create_table "bodies", force: :cascade do |t|
     t.decimal "weight", precision: 3, scale: 1
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180117092124) do
     t.integer "total_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "payment_status", default: false
   end
 
   create_table "personals", force: :cascade do |t|
@@ -70,6 +71,15 @@ ActiveRecord::Schema.define(version: 20180117092124) do
     t.string "city"
     t.string "address"
     t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+    t.text "content"
+    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

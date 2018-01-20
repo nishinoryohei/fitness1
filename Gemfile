@@ -19,7 +19,7 @@ gem 'breadcrumbs_on_rails'
 gem 'enum_help'
 gem 'sqlite3_ar_regexp', '~> 2.2'
 gem 'payjp'
-gem "letter_opener"
+gem 'jp_prefecture'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
@@ -63,6 +63,8 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

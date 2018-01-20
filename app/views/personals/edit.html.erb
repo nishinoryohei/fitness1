@@ -1,0 +1,9 @@
+<%= form_for(@personal) do |f| %>
+	<div>
+	<%= f.collection_select :state, JpPrefecture::Prefecture.all, :code, :name %>
+	<%= f.text_field :city, placeholder: '市区町村'%>
+	<%= f.text_field :address, placeholder: '丁目、番地' %>
+	<%= f.text_field :tel, placeholder: 'TEL:〇〇〇ー〇〇〇〇ー〇〇〇〇(間にハイフンを入れてください）'%>
+	</div>
+		<%= f.submit '登録' %>
+<% end %>

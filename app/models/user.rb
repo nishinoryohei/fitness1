@@ -3,10 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_one :personal
   has_many :bodies
   has_many :trainings
   has_many :items
   has_many :cart_items
+  has_many :reviews
   has_many :server, foreign_key: 'server_id', 
             class_name: 'Comment', dependent: :destroy
   has_many :receiver, foreign_key: 'receiver_id',
