@@ -2,6 +2,7 @@
 <% if @user.trainer == true %>
 	<%= render 'trainer' %>
 <% else %>
+	<div id='body-form'></div>
 	<%= figure %>
 	<%= lifestyle %>
     <% recommended_items.limit(10).each do |item| %>
@@ -17,7 +18,6 @@
 		<div>すでに入力してあります、また明日入力してください</div>
 		<%= link_to 'トレーニング', new_user_trainings_path(current_user) %>
 	<% end %>
-	<div id='body-form'></div>
 	<div class="menu">
 	<%= link_to '受信BOX', inbox_user_path(current_user) %>
 	<%= link_to 'アイテム一覧', items_path %>

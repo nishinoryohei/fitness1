@@ -72,7 +72,7 @@ RSpec.describe ItemsController, type: :controller do
 				login_user user
 			get :new
 			end
-			it 'パラメータが302になること' do
+			it 'リクエストが302になること' do
 				expect(response.status).to eq 302
 			end
 			it 'items_pathへリダイレクトする' do
