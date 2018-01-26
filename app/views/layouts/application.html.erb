@@ -7,22 +7,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   </head>
 
   <body>
-    <head>
-        <% if user_signed_in? %>
+    <header class="login-header">
+    <h1 class="title">Fitness</h1>
+    <% if user_signed_in? %>
       <ul class="header-nav">
         <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path,method: :delete %>|</li>
       </ul>
     <% else %>
-      <ul class="header-nav">
-        <li class="header-list"><%= link_to '新規登録', new_user_registration_path %>|</li>
-        <li class="header-list"><%= link_to 'ログイン', new_user_session_path %></li>
-      </ul>
     <% end %>
-      
-    </head>
+    </header>
     <%= yield %>
   </body>
 </html>

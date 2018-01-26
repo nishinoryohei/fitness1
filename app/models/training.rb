@@ -1,4 +1,5 @@
 class Training < ApplicationRecord
+	default_scope -> {order(created_at: :desc)}
 	belongs_to :user
 	validates :progress, presence: true
 	validates :goal, presence: true

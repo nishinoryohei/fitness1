@@ -13,14 +13,339 @@
  *= require_tree .
  *= require_self
  */
+ /*
+ *= require font-awesome
+ */
+body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+@charset"utf-8";
+
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+html {
+    font-size: 62.5%;
+}
+body{
+	color: #333;
+	font-size:1.2rem;
+	font-family: 'Quicksand',"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+*,*::before,*::after{
+	box-sizing: border-box;
+}
+a:link, a:visited,a:hover,a:active{
+	text-decoration: none;
+}
+/*  sessions */
+.login-header{
+	width: 100%;
+	height: 70px;
+	background-color: black;
+}
+.signup-link-header{
+	float: right;
+	padding-right: 30px;
+	font-size: 1.2rem;
+	color: white;
+	transition: .4s;
+}
+.signup-link-header:hover{
+	color: #ffa500;
+}
+.login-content{
+	position: relative;
+	width: 100%;
+	height: 500px;
+	padding: 20px 0 ;
+}
+.login-video{
+	position: absolute;
+	width: 100%;
+	height: 450px;
+}
+.video-logo{
+	position: absolute;
+	z-index: 10;
+	color: white;
+	font-family: 'Arimo', sans-serif;
+	font-size: 5rem;
+	text-align: center;
+	top: 100px;
+	right: 15%;
+}
+.login-form-content{
+	width: 70%;
+	height: 300px;
+	margin: 0 auto;
+}
+.about-title-area{
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.about-title{
+	font-family: 'Quicksand', sans-serif;
+	font-size: 3.5rem;
+}
+.about-sub-title1{
+	position: absolute;
+	right: 50px;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 2.5rem;
+	letter-spacing: 1rem;
+}
+.about-sub-title2{
+	position: absolute;
+	top:90px;
+	left: 50px;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 2.5rem;
+	letter-spacing: 1rem;
+}
+.about-text{
+	font-size: 1.7rem;
+	line-height: 3rem;
+	color: black;
+}
+.about-strong-word1{
+	display: inline-block;
+	padding: 15px 0;
+	font-size: 3rem;
+}
+.about-strong-word2{
+	display: inline-block;
+	position: absolute;
+	left: 80px;
+	top: 170px;
+	padding: 15px 0;
+	font-size: 5rem;
+}
+.about-container1{
+	position: relative;
+	width: 90%;
+	height: 400px;
+	padding: 20px;
+	border:1px solid #c0c0c0;
+	margin: 0 auto;
+}
+.about-container2{
+	position: relative;
+	width: 90%;
+	height: 770px;
+	padding: 20px;
+	margin: 30px auto 0;
+}
+.about-content2{
+	float: right;
+	width: 50%;
+	height: 570px;
+	padding-left: 70px;
+	padding-top: 20px;
+	border:1px solid #c0c0c0;
+}
+.about-text-area1{
+	position: absolute;
+	z-index: -1;
+	width: 70%;
+	height: 200px;
+	margin-right: 50px;
+	text-align: center;
+	right: 0;
+	top: 150px;
+	border:1px solid #a9a9a9;
+	background-color:#f5f5f5;
+}
+.about-text-area2{
+	position: absolute;
+	z-index: -1;
+	width: 40%;
+	height: 300px;
+	padding-top: 60px;
+	margin-right: 50px;
+	text-align: center;
+	left: 0;
+	bottom: 120px;
+	border:1px solid #a9a9a9;
+	background-color:#f5f5f5;
+}
+.about-img-description{
+	width: 100%;
+	height: 300px;
+	padding-top: 40px;
+}
+.description-title{
+	display: inline-block;
+	padding: 10px;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 2rem;
+	border-bottom: 1px solid black;
+}
+.descriptions{
+	padding:10px;
+	font-size: 1.5rem;
+}
+.about-img{
+	width: 370px;
+}
+.signup-link-area{
+	width: 300px;
+	margin: 30px auto;
+	text-align: center;
+}
+.signup-link{
+	font-family: 'Quicksand', sans-serif;
+	font-size: 3.5rem;
+	color: #808080;
+	transition: .4s;
+}
+.signup-link-jp{
+	padding-top: 10px;
+	font-size: 1.5rem;
+}
+.signup-link:hover {
+    color: black;
+    cursor: pointer;
+}
+/*registrations*/
+.login-link-header{
+	font-family: 'Arimo', sans-serif;
+	float: right;
+	padding-bottom: 10px;
+	padding-right: 50px;
+	font-size: 1.8rem;
+	color: white;
+	transition: .4s;
+}
+.login-link-header:hover{
+	color: #ffa500;
+}
+.signup-container{
+	width: 70%;
+	margin: 10px auto 25px;
+}
+/* --共通設定--*/
+.title{
+	padding-top: 15px;
+	padding-left: 30px;
+	font-size: 3rem;
+	font-family: 'Quicksand', sans-serif;
+	letter-spacing: 1rem;
+	color: white;
+}
+.new_user{
+	padding: 20px 0;
+	text-align: center;
+	border:1px solid #a9a9a9 ;
+	background-color: #f5f5f5;
+}
+.newuser-title{
+	display: inline-block;
+	width: 200px;
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 13px;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 3rem;
+	letter-spacing: 1.2rem;
+	text-align: center;
+}
+.newuser-title::before,
+.newuser-title::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid black;
+}
+.newuser-title::before{
+	bottom: 5px;
+}
+.newuser-form-area{
+	padding: 20px 0;
+}
+.newuser-form-label{
+	display: block;
+	font-family: 'Arimo', sans-serif;
+	font-size: 2rem;
+	letter-spacing: 1.5rem;
+}
+.submit {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #696969;
+    background-color: #f5f5f5;
+    border: solid 2px #d3d3d3;
+    border-radius: 3px;
+    transition: .4s;
+}
+.submit:hover {
+    border-color: #000000;
+    color: #696969;
+    cursor: pointer;
+}
+.short-form{
+	width: 300px;
+	height: 3rem;
+	padding: 0 5px ;
+	border:1px solid #a9a9a9;
+}
 #modal-content{
-	width:50%;
+	width:65%;
 	margin:1.5em auto 0;
-	padding:10px 20px;
+	padding:10px 20px 25px;
 	border:2px solid #aaa;
 	background:#fff;
+	text-align: center;
 	z-index:2;
 	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 #modal-overlay{
 	z-index:1;
@@ -40,6 +365,9 @@
 	background:#fff;
 	z-index:2;
 	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 #mod-overlay{
 	z-index:1;
@@ -50,4 +378,64 @@
 	width:100%;
 	height:120%;
 	background-color:rgba(0,0,0,0.75);
+}
+/* --js/_form--*/
+.js-content{
+	padding: 20px 0;
+}
+.js-title-area{
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+.js-form-area{
+	padding: 10px 0;
+}
+div .js-form{ 
+	width: 200px;
+}
+.js-checkbox-area{
+	width: 80%;
+	padding: 20px 0;
+	margin: 0 auto;
+	text-align: left;
+}
+.js-checkbox-left{
+	float: left;
+	width: 50%;
+}
+.js-checkbox-right{
+	float: right;
+	width: 50%;
+}
+.js-labels{
+	padding: 5px 0;
+	font-size: 1.4rem;
+}
+.js-checkboxs{
+	width: 16px;
+	height: 15px;
+}
+.js-radios{
+	width: 16px;
+	height: 15px;
+}
+.js-result-area{
+	padding: 30px 0;
+}
+.js-result{
+	padding-top: 10px;
+	font-size: 2rem;
+}
+.red{
+	color: red;
+}
+.orange{
+	color: #ffa500;
+}
+.yellow{
+	color: yellow;
+}
+.green{
+	color: green;
 }

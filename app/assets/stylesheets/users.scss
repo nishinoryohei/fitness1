@@ -1,3 +1,227 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*--user/show--*/
+.user-show-top-area{
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+	padding: 50px 0 30px;
+}
+.user-show-video{
+	width: 60%;
+}
+.user-show-input-area{
+	position: absolute;
+	text-align: center;
+	width: 400px;
+	height: 200px;
+	right: 0;
+	top: 30%;
+}
+.user-show-input-title{
+	display: inline-block;
+	width: 200px;
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 13px;
+	font-size: 3rem;
+	letter-spacing: 1.2rem;
+	text-align: center;
+}
+.user-show-input-title::before,
+.user-show-input-title::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid black;
+}
+.user-show-input-title::before{
+	bottom: 5px;
+}
+.user-show-input-link-area{
+	height: 130px;
+	padding-top: 60px;
+}
+.user-show-input-link{
+	font-size: 2.3rem;
+	color: #a9a9a9;
+	padding: 10px 20px;
+	border-radius: 15px;
+	border:2px solid #d3d3d3;
+	transition: .4s;
+}
+.user-show-input-link:hover {
+    border-color: #696969;
+    color: #696969;
+    cursor: pointer;
+}
+.user-show-input-text-area{
+	font-size: 1.4rem;
+}
+.user-show-input-text{
+	padding: 5px 0;
+}
+.user-show-mid-area{
+	width: 90%;
+	margin: 0 auto;
+	padding: 50px 0 30px;
+}
+.user-show-status-headline{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 3.5rem;
+	letter-spacing: 1.4rem;
+}
+.user-name{
+	font-size: 3rem;
+}
+.user-show-status{
+	float: left;
+	width: 45%;
+}
+.status{
+	padding-left: 20px;
+	display: inline-block;
+	font-size: 2.6rem;
+}
+.status-jp{
+	padding-left: 10px;
+	display: inline-block;
+}
+.chart-title{
+	width: 400px;
+	margin: 0 auto 5px;
+	font-size: 3.5rem;
+	letter-spacing: 1.2rem;
+}
+.user-status-chart{
+	float: right;
+	width: 55%;
+}
+.user-show-menu-area{
+	width: 80%;
+	padding:40px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+.user-show-menu-warpper{
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+.user-show-menu-content{
+	display: table-cell;
+}
+.user-show-menu-name{
+	font-size: 3rem;
+	padding-bottom: 5px;
+}
+.user-show-menu-name-jp{
+	font-size: 1.6rem;
+	padding-top: 8px;
+}
+.user-show-menu-link{
+	display: block;
+	width: 70%;
+	height: 140px;
+	padding: 10px;
+	margin: 0 auto;
+	color: #a9a9a9;
+	border: 1.5px solid #d3d3d3;
+	transition: .6s;
+}
+.user-show-menu-link:hover {
+    color: #000000;
+    border-color: #696969;
+}
+.user-show-recommend-area{
+	width: 100%;
+	padding:30px 0;
+	text-align: center;
+	overflow-x: auto;
+	-ms-overflow-style:none;
+}
+.user-show-recommend-title-area{
+	padding-top: 40px;
+	text-align: center;
+}
+.user-show-recommend-title{
+	font-size: 3.5rem;
+}
+.user-show-recommend-title-jp{
+	padding: 10px 0;
+	font-size: 2rem;
+}
+.user-show-recommend-area::-webkit-scrollbar{
+ 	display:none;
+}
+.user-show-recommend-wrapper{
+	display: table;
+	table-layout: fixed;
+}
+.user-show-recommend-content{
+	display: table-cell;
+	padding: 10px 30px;
+}
+.user-show-recommend-itemname{
+	font-size: 2rem;
+}
+.user-show-recommend-img{
+	width: 220px;
+}
+.user-show-recommend-price{
+	padding-top: 20px;
+	font-size: 1.6rem;
+}
+/*--body/form--*/
+#body-submit{
+	display: none;
+}
+/*.body-content{
+	padding: 20px 0;
+}
+.body-title-area{
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+.body-form-area{
+	padding: 10px 0;
+}
+div .body-form{ 
+	width: 200px;
+}
+.body-checkbox-area{
+	width: 80%;
+	padding: 20px 0;
+	margin: 0 auto;
+	text-align: left;
+}
+.body-checkbox-left{
+	float: left;
+	width: 50%;
+}
+.body-checkbox-right{
+	float: right;
+	width: 50%;
+}
+.body-labels{
+	padding: 5px 0;
+	font-size: 1.4rem;
+}
+.body-checkboxs{
+	width: 16px;
+	height: 15px;
+	background-color: white;
+}
+.body-result-area{
+	padding: 30px 0;
+}
+.body-result{
+	padding-top: 30px;
+	font-size: 2rem;
+}*/

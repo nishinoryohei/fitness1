@@ -1,44 +1,44 @@
 <div id="modal-overlay"></div>
 <div id="modal-content">
-<form id="content">
-	<div>
+	<div class="js-title-area">
+		<h2 class="user-show-input-title">Daily Record</h2>
+	</div>
+	<form class="js-content">
+	<div class="js-form-area">
 		<label for='height'>身長：</label>
-		<input type="number" step='0.1' max='300' min='0'
+		<input class="short-form js-form" type="number" step='0.1' max='300' min='0'
 		name="height" id="height" onblur="heightNum(this)">
 	</div>
-	<div>
+	<div class="js-form-area">
 		<label for='weight'>体重：</label>
-		<input type="number" step='0.1' max='200' min='0'
+		<input class="short-form js-form" type="number" step='0.1' max='200' min='0'
 		name="weight" id="weight" onblur="weightNum(this)">
 	</div>
-	<div>
-		<label><input type="checkbox" name="score" value=1>一日７～８時間睡眠をとっている</label>
-		<label><input type="checkbox" name="score" value=1>11時間以上の長期労働をしていない</label>
-		<label><input type="checkbox" name="score" value=1>タバコはすわない</label>
-		<label><input type="checkbox" name="score" value=1> 一日、日本酒1合（またはビール中ビン1本）以内をまもっている</label>
-		<label><input type="checkbox" name="score" value=1>週2日、酒を飲まない日をつくる</label>
-		<label><input type="checkbox" name="score" value=1> 週3日、30分以上適度の運動をつづけている</label>
-		<label><input type="checkbox" name="score" value=1> 夜食など間食をしない</label>
-		<label><input type="checkbox" name="score" value=1> 朝食を毎日とり、規則正しい食事生活をする</label>
-		<label><input type="checkbox" name="score" value=1> よく噛んで食べる</label>
+	<div class="js-checkbox-area clearfix">
+		<div class="js-checkbox-left">
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1>一日７～８時間睡眠をとっている</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1>11時間以上の長期労働をしていない</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1>タバコはすわない</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1> 一日、日本酒1合<br>（またはビール中ビン1本）以内をまもっている</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1>週2日、酒を飲まない日をつくる</label><br>
+		</div>
+		<div class="js-checkbox-right">
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1> 週3日、30分以上適度の運動をつづけている</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1> 夜食など間食をしない</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1> 朝食を毎日とり、規則正しい食事生活をする</label><br>
+			<label class="js-labels" ><input class="js-checkboxs" type="checkbox" name="score" value=1> よく噛んで食べる</label><br>
+		</div>
 	</div>
-	<div>
-		<input type="button" name="btn" id="btn" value="数値を出す">
-	</div>
-    <div>あなたのBMIは<span id="bmi"></span></div>
-</form>
-<button id="back">閉じる</button>
-<%= form_for(@body, remote: true) do |f| %>
-	<%= f.hidden_field :bmi %>
-	<%= f.hidden_field :weight %>
-	<%= f.hidden_field :height %>
-	<%= f.hidden_field :score %>
-	<%= f.submit '確認して送信する', id: 'body-submit'%>
-<% end %>
+	<div class="js-result-area">
+		<input class="submit" type="button" name="btn" id="btn" value="数値を出す">
+    	<div class="js-result">あなたのBMIは<span id="bmi"></span></div>
+    </div>
+	</form>
+	<%= form_for(@body) do |f| %>
+		<%= f.hidden_field :bmi %>
+		<%= f.hidden_field :weight %>
+		<%= f.hidden_field :height %>
+		<%= f.hidden_field :score %>
+		<%= f.submit '確認して送信する', id: 'body-submit' ,class: 'submit'%>
+	<% end %>
 </div>
-
-<style type="text/css">
-	#body-submit{
-		display: none;
-	}
-</style>

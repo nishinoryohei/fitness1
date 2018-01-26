@@ -5,7 +5,7 @@ class Item < ApplicationRecord
 	validates :description, presence: true
 	validates :price, presence: true
 	has_one :category, dependent: :delete
-	has_many :thumbnailes, dependent: :destroy
+	has_many :thumbnails, dependent: :destroy
 	has_many :cart_items
 	has_many :reviews
 	# scope :join_category, -> {joins(:category)}

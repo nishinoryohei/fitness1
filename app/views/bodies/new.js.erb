@@ -8,12 +8,6 @@ $("#modal-overlay").unbind().click(function(){
 	$("#modal-overlay").remove();
 	});
 });
-
-
-document.getElementById('back').addEventListener('click', function(){
- 	$('#content').slideUp("slow");
-}, false);
-
  function weightNum(obj){
  	var weight =obj.value;
  	console.log(weight);
@@ -35,7 +29,7 @@ document.getElementById('btn').addEventListener('click', function(){
 	var result = scoreCheck('score');
 	setParamsForRails(body_score, result)
 	var submit = document.getElementById('body-submit');
-	submit.style.display = 'block';
+	submit.style.display = 'inline-block';
 }, false);
 
 var setParamsForRails = function(params, num){

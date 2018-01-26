@@ -1,8 +1,14 @@
+
 $('#training-form').html("<%= j (render 'form') %>");
-$('#training-form').slideDown(800);
-
-
-
+$(this).blur() ;
+$("body").append('<div id="modal-overlay"></div>');
+$("#modal-overlay").fadeIn("slow");
+$("#modal-content").fadeIn("slow");
+$("#modal-overlay").unbind().click(function(){
+	$("#modal-content,#modal-overlay").fadeOut("slow",function(){
+	$("#modal-overlay").remove();
+	});
+});
 document.getElementById('btn').addEventListener('click', function(){
 	var result = scoreCheck('muscle');
 	result += scoreCheck('aerobic');
@@ -10,10 +16,9 @@ document.getElementById('btn').addEventListener('click', function(){
     setParamsForRails(training_goal, result)
     var point = document.getElementById('point')
     point.textContent = result
-    var submit = document.getElementById('training-submit');
-	submit.style.display = 'block';
+ 	var submit = document.getElementById('training-submit');
+	submit.style.display = 'inline-block';
 },false);
-
 var scoreCheck = function(score){
 	var result = 0
 	var scores = document.getElementsByName(score);

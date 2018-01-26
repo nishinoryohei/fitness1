@@ -1,38 +1,97 @@
-<h1>ようこそ<%= @user.name %> さん</h1>
 <% if @user.trainer == true %>
 	<%= render 'trainer' %>
 <% else %>
-	<div id='body-form'></div>
-	<%= figure %>
-	<%= lifestyle %>
+<div id='body-form'></div>
+<div class="user-show-top-area">
+	<%= video_tag("videos/douro.mp4", autoplay: true, loop: true, class: 'user-show-video') %>
+	<div class="user-show-input-area">
+		<% if once_a_day? @user.bodies %>
+			<p class="user-show-input-title">Daily Record </p>
+			<div class="user-show-input-link-area">
+				<%= link_to 'データを入力する', new_body_path, remote:true,class: 'user-show-input-link' %>
+			</div>
+		<% else %>
+			<p class="user-show-input-title">Training</p>
+			<div class="user-show-input-link-area">
+			<%= link_to 'トレーニング', new_user_trainings_path(current_user),class: 'user-show-input-link' %>
+			</div>
+			<div class="user-show-input-text-area">
+				<p class="user-show-input-text" >毎日の記録はすでに入力してあります</p>
+			   	<p class="user-show-input-text" >トレーニングメニュー、目標の設定はこちらから</p>
+				
+		    </div>
+		<% end %>
+	</div>
+</div>
+<div class="user-show-mid-area clearfix">
+	<div class="user-show-status">
+		<div class="user-show-welcome">
+			<p class="user-show-status-headline">Welcome</p>
+			<p class="user-name"><%= @user.name %> さん</p>
+		</div>
+		<div class="user-status">
+			<p class="user-show-status-headline">BMI status</p>
+			<p class="status <%= figure_color %>"><%= figure %></p>
+			<p class="status-jp"><%= figure_jp %></p>
+			<p class="user-show-status-headline">Lifestyle score</p>
+			<p class="status <%= lifestyle_color %>"><%= lifestyle %></p>
+			<p class="status-jp"><%= lifestyle_jp %></p>
+		</div>
+	</div>
+	<div class="user-status-chart">
+		<p class="chart-title">Weight Chart</p>
+		<%= weight_chart %>
+	</div>
+</div>
+<div class="user-show-menu-area clearfixc">
+	<div class="user-show-menu-warpper">
+		<div class="user-show-menu-content">
+			<%= link_to inbox_user_path(current_user),class: 'user-show-menu-link' do %>
+				<p class="user-show-menu-name">contact</p>
+				<i class="fa fa-envelope fa-4x" aria-hidden="true"></i>
+				<p class="user-show-menu-name-jp">受信BOX</p></a>
+			<% end %>
+		</div>
+		<div class="user-show-menu-content">
+			<%= link_to items_path, class: 'user-show-menu-link' do %>
+				<p class="user-show-menu-name">SHOP</p>
+				<i class="fa fa-shopping-basket fa-4x" aria-hidden="true"></i>
+				<p class="user-show-menu-name-jp">アイテム一覧</p></a>
+			<% end %>
+		</div>
+		<div class="user-show-menu-content">
+			<%= link_to new_personal_path, class: 'user-show-menu-link' do %>
+				<p class="user-show-menu-name">purchase</p>
+				<i class="fa fa-shopping-cart fa-4x" aria-hidden="true"></i>
+				<p class="user-show-menu-name-jp">購入ページへ</p></a>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="user-show-recommend-title-area">
+	<h3 class="user-show-recommend-title">Featured Products</h3>
+	<p class="user-show-recommend-title-jp">あなたのオススメ商品</p>
+</div>
+<div class="user-show-recommend-area">
+	<div class="user-show-recommend-wrapper">
     <% recommended_items.limit(10).each do |item| %>
-    	<div>
-		<%= link_to item.name, item_path(item.id) %>
-		<%= item.price %>
+    	<div class="user-show-recommend-content">
+			<%= link_to item.name, item_path(item.id),class: 'user-show-recommend-itemname' %>
+			<%= image_tag item.thumbnails.first.image.url,class: 'user-show-recommend-img' %>
+			<p class="user-show-recommend-price"><%= item.price %>円</p>
 		</div>
 	<% end %>
-	<%= weight_chart %>
-	<% if once_a_day? @user.bodies %>
-		<%= link_to 'データを入力する', new_body_path, remote:true %>
-	<% else %>
-		<div>すでに入力してあります、また明日入力してください</div>
-		<%= link_to 'トレーニング', new_user_trainings_path(current_user) %>
-	<% end %>
-	<div class="menu">
-	<%= link_to '受信BOX', inbox_user_path(current_user) %>
-	<%= link_to 'アイテム一覧', items_path %>
 	</div>
+</div>
 	<% @cart_in_items.each do |item| %>
 		<div>
 		<%= item.name %>
+		<%= image_tag item.thumbnails.first.image.url %>
 		<%= purchase_number item %>個
 		<%= subtotal item %>円
 		<%= link_to 'カートから出す', item_cart_items_destroy_path(item.id),method: :delete %>
 		</div>
 	<% end %>
 	合計<%= user_item_total_fee @user %>円
-	<%= link_to '購入ページへ', new_personal_path %>
-
-
 <% end %>
  

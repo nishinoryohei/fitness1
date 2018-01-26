@@ -1,6 +1,14 @@
-$('#training-update').html("<%= j (render 'update') %>");
-$('#training-update').slideDown(800);
 
+$('#training-update').html("<%= j (render 'form') %>");
+$(this).blur() ;
+$("body").append('<div id="modal-overlay"></div>');
+$("#modal-overlay").fadeIn("slow");
+$("#modal-content").fadeIn("slow");
+$("#modal-overlay").unbind().click(function(){
+	$("#modal-content,#modal-overlay").fadeOut("slow",function(){
+	$("#modal-overlay").remove();
+	});
+});
 document.getElementById('btn').addEventListener('click', function(){
 	var result = scoreCheck('muscle');
 	result += scoreCheck('aerobic');

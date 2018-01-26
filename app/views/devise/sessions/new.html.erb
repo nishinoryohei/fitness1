@@ -1,24 +1,71 @@
+<header class="login-header">
+  <h1 class="title">Fitness</h1>
+  <%= link_to '新規会員登録', new_user_registration_path,class: 'signup-link-header' %>
+</header>
+<div class="login-content clearfix">
+  <span class="video-logo">Be sure to succeed<br>Can achieve goal</span>
+  <%= video_tag("videos/sim.mp4", autoplay: true, loop: true, class: 'login-video') %>
+</div>
+<div class="login-content clearfix">
+  <div class="login-form-content">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h2 class="newuser-title">Login</h2>
+      <div class="newuser-form-area">
+        <%= f.label 'name',class: 'newuser-form-label' %><br/>
+        <%= f.text_field :name, placeholder: '(例）山田　太郎',class: 'short-form'%>
+      </div>
 
+      <div class="newuser-form-area">
+        <%= f.label 'password',class: 'newuser-form-label' %><br/>
+        <%= f.password_field :password, placeholder: '6文字以上',class: 'short-form'%>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+<!--       <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div> -->
+      <% end %>
+      <div>
+        <%= f.submit "ログイン" ,class: 'submit'%>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+</div>
+<div class="about-title-area">
+  <h3 class="about-title">ABOUT THIS</h3>
+</div>
+<div class="about-container1 clearfix">
+  <div class="about-content clearfix">
+    <%= image_tag "ran.jpeg", class: 'about-img' %>
+    <span class="about-sub-title1">Challenge</span>
+    <div class="about-text-area1">
+      <p class="about-text"><strong class="about-strong-word1">挑戦</strong><br>毎日少しずつ積み重ねて理想の体を手に入れよう。<br>あなたの挑戦を支えるために２４時間完全オンラインサポート<br>
+      もう、挫折することはありません</p>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
+<div class="about-container2">
+  <div class="about-content2">
+      <%= image_tag 'dumbbells.jpg', class: 'about-img' %>
+      <ul class="about-img-description">
+        <li class="description-title">Company</li>
+        <li class="descriptions">hoge社</li>
+        <li class="descriptions">foga社</li>
+        <li class="descriptions">gorigori社</li>
+        <li class="descriptions">株式会社test</li>
+        <li class="descriptions">株式会社あいうえお</li>
+      </ul>
+    <p class="about-sub-title2">Cooperation</p>
+    <p class="about-strong-word2">協力</p>
+    <div class="about-text-area2">
+      <p class="about-text">多くの企業様から商品を<br>提供していただいております。<br>毎日の体重や生活習慣にあわせた商品を<br>
+      トレーナー監修のもと<br>
+      オススメさせていただきます。</p>
+    </div>
+  </div>
+</div>
+<div class="signup-link-area">
+  <%= link_to 'signup',new_user_registration_path,class: 'signup-link' %>
+  <p class="signup-link-jp">新規会員登録はこちら</p>
+</div>

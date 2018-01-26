@@ -1,15 +1,37 @@
-<h1>トレーニング</h1>
-<% if once_a_day?(@user.trainings) %>
-	<% if training_reported? @user %>
-		<%= link_to '今日の目標', new_user_trainings_path, remote: true %>
-	<% else %>
-		<%= link_to 'トレーニング報告', edit_user_trainings_path, remote: true %>
-	<% end %>
-<% else %>
-	今日も一日頑張りましょう
-<% end %>
-<div>前回の結果<%= training_evaluation %></div>
 <div id="training-form"></div>
 <div id="training-update"></div>
-<%= training_chart %>
+<div class="user-training-top-area clearfix">
+	<div class="user-training-top-left">
+		<div class="user-training-title-area">
+			<h2 class="user-training-title">Training</h2>
+		</div>
+		<div class="user-training-content-area">
+			<% if once_a_day?(@user.trainings) %>
+				<% if training_reported? @user %>
+					<p class="user-training-headline">Today's goal</p>
+						<div class="user-training-link-area"> 
+						<%= link_to '今日の目標', new_user_trainings_path, remote: true,class: 'user-training-link' %>
+					</div>
+				<% else %>
+					<div class="user-training-link-area">
+						<p class="user-training-headline">Training report</p>
+						<%= link_to 'トレーニング報告', edit_user_trainings_path, remote: true,class: 'user-training-link' %>
+					</div>
+				<% end %>
+			<% else %>
+			<div class="proverb-area">
+				<p class="proverb"><%= proverb %></p>
+				<p class="athlete"><%= athlete %></p>
+			</div>
+			<% end %>
+		</div>
+		<p class="user-training-headline">Result</p>
+		<div class="user-training-result-area">
+			<p class="user-training-result <%= training_color %>"><%= training_evaluation %><p>
+			<p class="user-training-result-jp"><%= training_evaluation_jp %></p>
+		</div>
+	</div>
+	<%= video_tag("videos/gake.mp4", autoplay: true, loop: true, class: 'user-training-video') %>
+</div>
+	<%= training_chart %>
 
