@@ -40,6 +40,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	height: 100%;
 	line-height: 1;
 }
 ol, ul {
@@ -65,6 +66,7 @@ table {
 	clear: both;
 }
 html {
+	height: 100%;
     font-size: 62.5%;
 }
 body{
@@ -78,22 +80,86 @@ body{
 a:link, a:visited,a:hover,a:active{
 	text-decoration: none;
 }
-/*  sessions */
-.login-header{
+a{
+	color: #696969;
+}
+table {
+    border-collapse: collapse;
+}
+table th,
+table td {
+    border: 1px solid #999;
+    padding: 10px;
+}
+/*--header- */
+.header{
 	width: 100%;
 	height: 70px;
 	background-color: black;
 }
-.signup-link-header{
+.title{
+	display: inline-block;
+	padding-top: 15px;
+	padding-left: 50px;
+	font-size: 3rem;
+	font-family: 'Quicksand', sans-serif;
+	letter-spacing: 1rem;
+	color: white;
+}
+.header-session-area{
 	float: right;
+	padding-top: 50px;
+	padding-right:20px;
+}
+.header-login-link{
+	color: white;
 	padding-right: 30px;
-	font-size: 1.2rem;
+}
+.header-signup-link{
+	color: white;
+}
+.header-logout-area{
+	float: right;
+	padding-top: 50px;
+	padding-right:20px;
+}
+.header-logout{
+	color: white;
+	transition: .1s;
+}
+.header-logout:hover{
+	color: #ff8c00;
+}
+.header-user-menu-area{
+	display: inline-block;
+	width: 50%;
+	padding-left: 40px;
+	text-align: left;
+}
+.header-user-menu{
+	display: inline-block;
+	width: 20%;
+	margin: 10px 3px ;
+	text-align: center;
+}
+.header-user-link{
+	display: block;
+	height: 50px;
+	padding-top: 13px;
+	border: 1px solid white;
 	color: white;
 	transition: .4s;
 }
-.signup-link-header:hover{
-	color: #ffa500;
+.header-user-link:hover{
+	border-color: #ff8c00; 
+	color: #ff8c00;
 }
+.header-user-link-name{
+
+}
+.header-user-link-name-jp{
+}
+/*  sessions */
 .login-content{
 	position: relative;
 	width: 100%;
@@ -250,31 +316,11 @@ a:link, a:visited,a:hover,a:active{
     cursor: pointer;
 }
 /*registrations*/
-.login-link-header{
-	font-family: 'Arimo', sans-serif;
-	float: right;
-	padding-bottom: 10px;
-	padding-right: 50px;
-	font-size: 1.8rem;
-	color: white;
-	transition: .4s;
-}
-.login-link-header:hover{
-	color: #ffa500;
-}
 .signup-container{
 	width: 70%;
 	margin: 10px auto 25px;
 }
 /* --共通設定--*/
-.title{
-	padding-top: 15px;
-	padding-left: 30px;
-	font-size: 3rem;
-	font-family: 'Quicksand', sans-serif;
-	letter-spacing: 1rem;
-	color: white;
-}
 .new_user{
 	padding: 20px 0;
 	text-align: center;
@@ -369,16 +415,6 @@ a:link, a:visited,a:hover,a:active{
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-#mod-overlay{
-	z-index:1;
-	display:none;
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:120%;
-	background-color:rgba(0,0,0,0.75);
-}
 /* --js/_form--*/
 .js-content{
 	padding: 20px 0;
@@ -427,6 +463,10 @@ div .js-form{
 	padding-top: 10px;
 	font-size: 2rem;
 }
+.js-submit-area{
+	padding: 20px 0;
+	text-align: center;
+}
 .red{
 	color: red;
 }
@@ -438,4 +478,9 @@ div .js-form{
 }
 .green{
 	color: green;
+}
+/* --共通設定/trainer --*/
+.trainer-title{
+	padding: 20px;
+	font-size: 3rem;
 }

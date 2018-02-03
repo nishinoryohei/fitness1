@@ -28,7 +28,7 @@ class TrainingsController < ApplicationController
 	def update
 		if @last_training.update(training_params)
 			@last_training.update(fruition: goal_achievement?(@last_training))
-			redirect_to user_path(current_user.id)
+			redirect_to new_user_trainings_path(current_user.id)
 		else
 			render 'edit.js'
 		end
@@ -41,7 +41,7 @@ class TrainingsController < ApplicationController
 		training.goal < training.progress		
 	end
 	def set_user_last_training
-		@last_training = Training.where(user_id: current_user.id).last
+		@last_training = Training.where(user_id: current_user.id).first
 	end
 	def chart_data
 		@goal_chart = Training.chart_goal(current_user.id).reverse

@@ -1,16 +1,33 @@
 <div id="modal-overlay"></div>
-<div id="modal-content">
-	<div>
+<div id="modal-content" class="modal-comment">
+	<div class="comment-form">
 		<%= form_for(@comment) do |f| %>
-			<%= f.text_field :content %>
-			<% if current_user.trainer == true %>
-				<%= f.collection_select :receiver_id, User.customers, :id, :name %>
-				<%= f.submit '投稿' %>
+			<%= f.text_area :content, class: 'comment-form-content' %>
+			<% if params[:id].present? %>
+				<div class="comment-form-area">
+					<p class="comment-form-destination-user"><%= User.find(params[:id]).name %>に送信する</p>
+					<%= f.hidden_field :receiver_id, value:(params[:id].to_i) %>
+					<%= f.submit '投稿', class: 'submit'%>
+				</div>
 			<% else %>
-				<%= f.collection_select :receiver_id, User.trainers, :id, :name %>
-				<%= f.submit '投稿' %>
+				<% if current_user.trainer == true %>
+					<div class="comment-form-area">
+						送信先：
+						<%= f.collection_select :receiver_id, User.customers, :id, :name,{}, {class: 'comment-form-destination'} %>
+						<div class="comment-submit-area">
+							<%= f.submit '送信', class: 'submit' %>
+						</div>
+					</div>
+				<% else %>
+					<div class="comment-form-area">
+						送信先：
+						<%= f.collection_select :receiver_id, User.trainers, :id, :name, {},{class: 'comment-form-destination'} %>
+						<div class="comment-submit-area">
+							<%= f.submit '送信', class: 'submit' %>
+						</div>
+					</div>
+				<% end %>
 			<% end %>
 		<% end %>
-		<p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
 	</div>
 </div>

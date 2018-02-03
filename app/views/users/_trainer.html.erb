@@ -1,27 +1,95 @@
-<%= link_to '受信BOX', inbox_user_path(current_user) %>
-<%= link_to 'アイテム一覧', items_path %>
-<%= link_to '出品', new_item_path %>
-<% @exhibit_item.each do |item| %>
-	<div>
-	<%= link_to item.name, item_path(item) %>
-	<%= item.description %>
-	<%= item.price %>
-	<% unless sold_out? item %>
-		<%= item.stock %>
-	<% else %>
-		完売!
+<div class="trainer-show-search-area clearfix">
+	<h2 class="trainer-title" >アイテム管理</h2>
+	<%= form_with url: root_path, method: :get, local: true do |form| %>
+	<div class="trainer-show-search-left">
+		<div class="trainer-show-search-form-area">
+			<%= form.label 'キーワード検索' %>
+			<%= form.text_field :keyword, value:params[:keyword], class: 'trainer-show-search-form'%>
+		</div>
+		<div class="trainer-show-search-form-area">
+			<%= form.label '～円以下' %>
+			<%= form.number_field :max_price, value:params[:max_price],class: 'trainer-show-search-form'%>
+		</div>
+		<div class="trainer-show-search-form-area">
+			<%= form.label '～円以上' %>
+			<%= form.number_field :min_price, value:params[:min_price],class: 'trainer-show-search-form'%>
+		</div>
+	</div>
+		<div class="trainer-show-search-select-area">
+ 			<div class="trainer-show-genre-area">
+			<p>	ジャンル</p>
+			<% Category.genres.keys.zip(Category.genres.values).each do |genre,value| %>
+				<div id= 'genre<%= value %>' class='genre<%= value %>'>
+					<%= form.radio_button :genre,value,id:'genrebtn'+value.to_s %>
+					<%= genre %>
+				</div>
+				<% if value == 41 || value == 42 || value == 43 || value == 44 %>
+					</div>
+					<div class="trainer-show-genre-area">
+				<% end %>
+			<% end %>
+		</div>
+		</div>
+		<div class="trainer-show-search-right">
+		<%= form.label '売り切れの商品' %>
+		<%= form.radio_button :boolean, 1 %>
+		<%= form.submit '検索' , class: 'submit'%>
+		<%= link_to 'リセットする', root_path, class: 'item-search-reset' %>
+		</div>
 	<% end %>
-	<%= item.category.genre %>
-	<%= item.category.keyword %>
-    </div>
-<% end %>
-:未入金の注文
-<% @still_payment_orders.each do |order| %>
-	<div>
-	<%= User.find(order.user_id).name %>
-	<%= order.total_fee %>円
-	<%= order.created_at %>
-	<%= link_to '入金を確認', order_path(order.id),method: :patch %>
-    </div>
-<% end %>
-<%= paginate @exhibit_item %>
+</div>
+<div class="trainer-show-area">
+	<table>
+		<tr>
+			<th>商品名</th>
+			<th>商品説明</th>
+			<th>価格</th>
+			<th>在庫</th>
+			<th>カテゴリ</th>
+			<th>検索ワード</th>
+		</tr>
+	<% @exhibit_item.each do |item| %>
+		<tr class="trainer-show-item-content">
+			<td class="trainer-show-item-name">
+				<%= link_to item.name, item_path(item), class: 'trainer-show-item-name-link' %>
+			</td>
+			<td class="trainer-show-item-description"><%= item.description %></td>
+			<td class="trainer-show-item-price">￥<%= item.price %></td>
+			<% unless sold_out? item %>
+				<td class="trainer-show-item-stock"><%= item.stock %></td>
+			<% else %>
+				<td class="trainer-show-item-soldout">完売!</td>
+			<% end %>
+			<td class="trainer-show-item-genre"><%= item.category.genre %></td>
+			<td class="trainer-show-item-keyword"><%= item.category.keyword %></td>
+    	</tr>
+	<% end %>
+	</table>
+	<div class="item-index-page">
+		<%= paginate @exhibit_item %>
+	</div>
+</div>
+<script type="text/javascript">
+function viewFormForGenre(num, ary){
+	document.getElementById('genrebtn' + num).addEventListener('click', function(){
+		var genres =  document.querySelectorAll("div[class$="+ "\'"+ num +"\'" +"]" );
+		for(var i = 0, len = genres.length; i < len; i++){
+			var genre = genres.item(i);
+			genre.style.display = 'block';
+		}
+		for(var f = 0, len = ary.length; f < len; f++){
+			var n = ary[f];
+			var genres = document.querySelectorAll("div[class$="+ "\'"+ n +"\'" +"]" );
+			for(var j = 0, l = genres.length; j < l; j++){
+			var genre = genres.item(j);
+			console.log(genre);
+			genre.style.display = 'none';
+			}
+		}
+	}, false);
+};
+viewFormForGenre('1', [2,3,4])
+viewFormForGenre('2', [1,3,4])
+viewFormForGenre('3', [1,2,4])
+viewFormForGenre('4', [1,2,3])
+</script>

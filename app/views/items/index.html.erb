@@ -1,53 +1,77 @@
-<h1>商品一覧</h1>
-<%= link_to 'アイテム一覧', items_path %> 
-<%= form_with url: items_path, method: :get, local: true do |form| %>
-	<%= form.label 'キーワード検索' %>
-	<%= form.text_field :keyword, value:params[:keyword] %>
-	<%= form.label :max_price %>
-	<%= form.number_field :max_price, value:params[:max_price] %>
-	<%= form.label :min_price %>
-	<%= form.number_field :min_price, value:params[:min_price] %>
-	<% Category.genres.keys.zip(Category.genres.values).each do |genre,value| %>
-		<div id= 'genre<%= value %>' class='genre<%= value %>'>
-		<%= form.radio_button :genre,value,id:'genrebtn'+value.to_s %>
-		<%= genre %>
-		</div>
-	<% end %>
-	<%= form.submit '検索' %>
-<% end %>
-<% @items.each do |item| %>
-	<% unless sold_out? item %>
-	<div>
-	<%= link_to item.name, item_path(item) %>
-	<%= item.description %>
-	<%= item.price %>
-	<%= item.stock %>
-	<%= item.category.genre %>
-	<%= item.category.keyword %>
+<div class="item-index-sidemenu">
+	<div class="item-index-sidemenu-title-area">
+		<p class="item-index-sidemenu-title">Search</p>
 	</div>
-	<% else %>
-	<div>売り切れ</div>
+	<%= form_with url: items_path, method: :get, local: true do |form| %>
+		<div class="item-index-search-area">
+			<%= form.label 'キーワード検索' %>
+			<%= form.text_field :keyword, value:params[:keyword], class: 'item-index-search-form'%>
+		</div>
+		<p>金額で絞り込む</p>
+		<div class="item-index-search-area">
+			<%= form.label '～円以下' %>
+			<%= form.number_field :max_price, value:params[:max_price],class: 'item-index-search-form'%>
+		</div>
+		<div class="item-index-search-area">
+			<%= form.label '～円以上' %>
+			<%= form.number_field :min_price, value:params[:min_price],class: 'item-index-search-form'%>
+		</div>
+		<div class="item-index-search-category">
+			<p>カテゴリごとに<br>絞り込む</p>
+		<div class="item-index-genre-area">
+		<% Category.genres.keys.zip(Category.genres.values).each do |genre,value| %>
+			<div id= 'genre<%= value %>' class='genre<%= value %>'>
+				<%= form.radio_button :genre,value,id:'genrebtn'+value.to_s %>
+				<%= genre %>
+			</div>
+			<% if value == 41 || value == 42 || value == 43 || value == 44 %>
+				</div>
+				<div class="item-index-genre-area">
+			<% end %>
+		<% end %>
+		</div>
+	</div>
+	<div class="item-search">
+		<%= form.submit '検索' , class: 'submit'%>
+		<%= link_to 'リセットする', items_path, class: 'item-search-reset' %> 
+	</div>
 	<% end %>
-<% end %>
-<%= paginate @items %>
-<style type="text/css">
-	#genre1,
-	#genre2,
-	#genre3,
-	#genre4{
-		display: block !important;
-	}
-	div[class^='genre']{
-		display: none;
-	}
-</style>
-
+</div>
+<div class="item-index-content-area">
+	<% @items.each do |item| %>
+		<% unless sold_out? item %>
+			<div class="item-index-items">
+				<% if item.thumbnails.empty? %>
+					<%= image_tag item.thumbnails.first.image.url,class: 'item-index-items-img' %>
+				<% else %>
+					<p>画像がありません</p>
+				<% end %>
+				<%= link_to item.name, item_path(item), class: 'item-index-items-name' %>
+				<p class="item-index-items-genre">:<%= item.category.genre %>
+				<p class="item-index-items-description"><%= item.description %></p>
+				<p class="item-index-items-price">￥<%= item.price %></p>
+				<p class="item-index-items-stock"%>残り<%= item.stock %>個</p>
+				<% if item.stock <= 5 %>
+					<p class="item-stock-info">残りわずかです！！</p>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="item-index-items-soldout">
+				<%= image_tag item.thumbnails.first.image.url,class: 'item-index-items-img' %>
+				<p class="item-index-items-name-soldout"><%= item.name %></p>
+				<p class="item-index-items-genre">:<%= item.category.genre %>
+				<p class="item-index-items-description"><%= item.description %></p>
+				<p class="item-index-items-price">￥<%= item.price %></p>
+				<strong class="item-index-soldout">売り切れ</strong>
+				<p class="item-index-items-stock">売り切れ</p>
+			</div>
+		<% end %>
+	<% end %>
+	<div class="item-index-page"><%= paginate @items %></div>
+</div>
 <script type="text/javascript">
-
-
 function viewFormForGenre(num, ary){
 	document.getElementById('genrebtn' + num).addEventListener('click', function(){
-		viewFormForGenre(1)
 		var genres =  document.querySelectorAll("div[class$="+ "\'"+ num +"\'" +"]" );
 		for(var i = 0, len = genres.length; i < len; i++){
 			var genre = genres.item(i);
@@ -68,22 +92,5 @@ viewFormForGenre('1', [2,3,4])
 viewFormForGenre('2', [1,3,4])
 viewFormForGenre('3', [1,2,4])
 viewFormForGenre('4', [1,2,3])
-	// function viewFormForGenre(num){
-	// 	var genres =  document.querySelectorAll("div[class$='1']");
-	// 	for(var i = 0, len = genres.length; i < len; i++){
-	// 		var genre = genres.item(i);
-	// 		genre.style.display = 'block';
-	// 	};
-	// };
-
-	
 </script>
-<!-- 
-	document.getElementById('genre1').addEventListener('click', function(){
-		var genres =  document.querySelectorAll("div[class$='1']");
-		for(var i = 0, len = genres.length; i < len; i++){
-			var genre = genres.item(i);
-			genre.style.display = 'block';
-		}
-	}, false); -->
 	

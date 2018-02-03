@@ -29,4 +29,11 @@ class Item < ApplicationRecord
 			joins(:category).merge(Category.where("keyword like'%"+keyword+"%'"))
 		end
 	}
+	scope :soldout_items, ->(boolean){
+		unless boolean.nil?
+			if boolean == '1'
+				where(Item.arel_table[:stock].eq(0))
+			end
+		end
+	}
 end

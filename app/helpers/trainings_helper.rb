@@ -1,6 +1,6 @@
 module TrainingsHelper
 	def training_reported? user
-		user.trainings.empty? || user.trainings.first.created_at != user.trainings.last.updated_at
+		user.trainings.empty? || user.trainings.first.created_at != user.trainings.first.updated_at
 	end
 	def training_chart
 		line_chart [
@@ -9,21 +9,21 @@ module TrainingsHelper
 		] ,ytitle: "運動強度"
 	end
 	def training_evaluation
-		if @user.trainings[2].nil? ||  @user.trainings[2].fruition == false
+		if @user.trainings[1].nil? ||  @user.trainings[1].fruition == false
 			'Failure'
 		else
 			'Attainment'
 		end
 	end
 	def training_evaluation_jp
-		if @user.trainings[2].nil? ||  @user.trainings[2].fruition == false
+		if @user.trainings[1].nil? ||  @user.trainings[1].fruition == false
 			'目標達成失敗、頑張りましょう'
 		else
 			'目標達成！この調子頑張ってください'
 		end
 	end
 	def training_color
-		if @user.trainings[2].nil? ||  @user.trainings[2].fruition == false
+		if @user.trainings[1].nil? ||  @user.trainings[1].fruition == false
 			'red'
 		else
 			'green'

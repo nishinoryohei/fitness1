@@ -1,0 +1,58 @@
+<div class="order-index-order-area">
+	<h2 class="trainer-title">オーダー一覧</h2>
+<div class="order-search-area">
+<%= form_with url: orders_path, method: :get, local: true do |form| %>
+	<div class="order-search-form-area" >
+	<%= form.label 'ユーザー名：' %>
+	<%= form.text_field :user_name, value:params[:user_name] %>
+	</div>
+	<div class="order-search-form-area" >
+	<%= form.label '日付検索：' %>
+  	<%= raw sprintf(
+              form.date_select(
+                  :date,
+                  include_blank: true,
+                  use_month_numbers: true,
+                  date_separator:    '%s'),
+              '年 ', '月 ') + '日' %>
+    </div>
+    <div class="order-search-form-area" >
+	<%= form.label '都道府県：' %>
+	<%= form.collection_select :state, JpPrefecture::Prefecture.all, :code, :name, include_blank: true %>
+	</div>
+	<div class="order-search-form-area" >
+	<%= form.label '未入金の注文：' %>
+	<%= form.radio_button :payment_status, 1 %>
+	</div>
+	<%= form.submit '検索', class: 'submit' %>
+<% end %>
+</div>
+<table>
+	<tr>
+		<th>ユーザー名</th>
+		<th>注文金額</th>
+		<th>注文時刻</th>
+		<th>都道府県</th>
+		<th>住所１</th>
+		<th>住所２</th>
+		<th>電話番号</th>
+		<th>支払い状況</th>
+	</tr>
+<% @orders.each do |order| %>
+	<tr>
+		<td class="order-index-username" ><%= User.find(order.user_id).name %></td>
+		<td class="order-index-totalfee" >￥<%= order.total_fee %></td>
+		<td class="order-index-date" ><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+		<td class="order-index-state" ><%= order.user.personal.prefecture.name %></td>
+		<td class="order-index-city" ><%= order.user.personal.city %></td>
+		<td class="order-index-address" ><%= order.user.personal.address %></td>
+		<td class="order-index-tel" ><%= order.user.personal.tel %></td>
+		<% if order.payment_status == false %>
+			<td class="order-stil">未入金<br><%= link_to '入金を確認', order_path(order.id),class: 'order-stil-link',method: :patch %></td>
+		<% else %>
+			<td class="order-already">入金済み</td>
+		<% end %>
+	</tr> 
+<% end %>
+</table>
+</div>

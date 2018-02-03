@@ -1,15 +1,23 @@
-<%= link_to 'コメント' , new_comment_path, remote:true %>
+<div class="user-talkroom-area" id="scroll">
 <div id="comment-form"></div>
 <% @talk.each do |c| %>
 	<% if c.server_id == @user.id %>
-		<div id="serve">
-			<%= @user.name %>
-			<%= c.content %>		
+		<div class="user-talkroom-comment-area left clearfix">
+			<p class="user-talkroom-username"><%= current_user.name %></p>
+			<div class="user-comment-balloon left-balloon">
+				<p class="user-talkroom-comment"><%= c.content %></p>
+			</div>
 		</div>
 	<% else %>
-		<div id="receive">
-			<%= current_user.name %>
-			<%= c.content %>		
+		<div class="user-talkroom-comment-area right clearfix">
+			<div class="user-comment-balloon right-balloon">
+				<p class="user-talkroom-comment"><%= c.content %></p>
+			</div>
+			<p class="user-talkroom-username"><%= @user.name %></p>
 		</div>
 	<% end %>
 <% end %>
+<div class="user-talkroom-comment-submit">
+	<%= link_to 'コメント',{controller: "comments", action: "new", id: @user.id},remote:true,class: 'submit talkroom-comment-submit' %>
+</div>
+</div>

@@ -1,3 +1,371 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-index-sidemenu{
+	float: left;
+	width: 17%;
+	height: 90vh;
+	padding: 10px;
+	border-right: 1px solid black;
+	height: -webkit-calc(100vh - 70px) ;
+    height: calc(100vh - 70px) ;
+}
+.item-index-sidemenu-title-area{
+	padding: 10px 0;
+	text-align: center;
+}
+.item-index-sidemenu-title{
+	width: 90%;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	position: relative;
+	font-size: 2rem;
+}
+.item-index-sidemenu-title::before,
+.item-index-sidemenu-title::after{
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid black;
+}
+.item-index-sidemenu-title::before{
+	bottom: 5px;
+}
+.item-index-search-area{
+	padding: 10px 0;
+}
+.item-index-search-form{
+	width:80%; 
+	margin-left: 7px;
+}
+.item-index-search-category{
+	padding: 10px 5px;
+}
+.item-index-genre-area{
+	padding: 10px 0;
+	font-size: 1.4rem;
+}
+.item-search{
+	text-align: center;
+}
+.item-search-reset{
+	display: block;
+	padding-top: 30px;
+}
+#genre1,
+#genre2,
+#genre3,
+#genre4{
+	display: block !important;
+	font-size: 2rem;
+	border-bottom: 2px solid #d3d3d3;
+}
+div[class^='genre']{
+		display: none;
+}
+.item-index-content-area{
+	height: 90vh;
+	height: -webkit-calc(100vh - 70px) ;
+    height: calc(100vh - 70px) ;
+    padding: 0 40px 40px;
+	overflow-y: auto;
+	-ms-overflow-style:none;
+}
+.item-index-items{
+	display: inline-block;
+	width: 33%;
+	padding: 10px 25px;
+	font-size: 1.4rem;
+}
+.item-index-items-img{
+	width: 150px;
+}
+.item-index-items-name{
+	display: block;
+	padding-top: 10px;
+	font-size: 1.7rem;
+	color: #0066c0;
+	transition: .1s
+}
+.item-index-items-name:hover{
+	color: #ff8c00;
+}
+.item-index-items-name-soldout{
+	display: block;
+	padding-top: 10px;
+	font-size: 1.7rem;
+}
+.item-index-items-genre{
+	padding-top: 10px;
+	font-size: 1.2rem;
+}
+.item-index-items-description{
+	padding-top: 2px;
+	overflow: hidden;
+	text-overflow: clip;
+	word-break: break-all;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+.item-index-items-price{
+	padding-top: 5px;
+	font-size: 1.8rem;
+	color: #8b0000;
+}
+.item-index-items-stock{
+	display: inline-block;
+	padding-top: 5px;
+}
+.item-stock-info{
+	display: inline-block;
+	padding-left: 10px;
+	font-size: 1.2rem;
+	color: #ff0000;
+}
+.item-index-items-soldout{
+	position: relative;
+	display: inline-block;
+	width: 33%;
+	padding: 10px 25px;
+	font-size: 1.4rem;
+}
+.item-index-soldout{
+	position: absolute;
+	z-index: 2;
+	border:1px solid red;
+	padding: 7px;
+	border-radius: 10px;
+	font-size: 3rem;
+	letter-spacing: 1.2rem;
+	color: #ff0000;
+	top: 110px;
+	left:24%;
+	transform: rotate(-20deg);
+}
+.item-index-page{
+	padding-top: 20px;
+	text-align: center;
+	font-size: 1.6rem;
+}
+/* --item/show--*/
+.item-show{
+	width: 100%;
+}
+.item-show-left-area{
+	float: left;
+	width: 42%;
+	padding: 10px 30px;
+}
+.item-show-item-name{
+	font-size: 3rem;
+	padding-left: 20px;
+}
+.item-show-item-score{
+	font-size: 1.8rem;
+	padding-top: 10px;
+	padding-left: 30px;
+}
+.item-show-item-img{
+	width: 100%;
+}
+.item-show-center-area{
+	float: left;
+	width: 37%;
+	padding-right: 20px;
+	padding-top: 70px;
+}
+.item-show-item-description{
+	font-size: 1.4rem;
+	height: 300px;
+	overflow-y: scroll;
+	word-break: break-word;
+}
+.item-show-item-description::-webkit-scrollbar{
+ 	display:none;
+}
+.item-show-item-price{
+	padding-top: 5px;
+	font-size: 2.8rem;
+	color: #8b0000;
+}
+.item-show-item-stock{
+	font-size: 1.5rem;
+	padding-bottom: 30px;
+}
+.item-show-cart-area{
+	padding-top: 10px;
+}
+.item-show-cart-title{
+	font-size: 2rem;
+}
+.item-show-cart-quantity-info{
+	padding: 10px 0 5px;
+}
+.item-show-cart-quantity{
+	margin-bottom: 15px;
+}
+.item-show-right-area{
+	float: left;
+	width: 21%;
+	padding:0 20px;
+	border-left: 1px solid black;
+}
+.item-show-review-area{
+	height: 505px;
+	height: -webkit-calc(100vh - 70px) ;
+    height: calc(100vh - 185px) ;
+    padding-bottom: 20px;
+    overflow-y: scroll;
+	word-break: break-word;
+}
+.item-show-review-area::-webkit-scrollbar{
+ 	display:none;
+}
+.item-show-review-comment-area{
+	padding: 10px 0 ;
+}
+.item-show-review-comment{
+	font-size: 1.6rem;
+}
+.item-show-review-username{
+	display: inline-block;
+	font-size: 1.4rem;
+	color: #228b22;
+}
+.item-show-review-time{
+	display: inline-block;
+}
+.review-comment-delete{
+	padding-left: 5px;
+	color: #0066c0;
+	transition: .1s
+}
+.review-comment-delete:hover{
+	color: #ff8c00;
+}
+.item-show-review-form-area{
+	text-align: center;
+	padding-bottom: 10px;
+}
+.item-show-review-form{
+	width: 105%;
+	height: 50px;
+}
+.item-show-review-score-area{
+	padding-bottom: 5px;
+}
+.item-show-review-score-title{
+	display: inline-block;
+}
+/* --item/show/trainer --*/
+.item-edit-form-area{
+	display: inline-block;
+	padding: 20px 0;
+}
+.item-edit-description-form{
+	width: 100%;
+	height: 350px;
+	font-size: 2rem;
+}
+.item-edit-stock-form{
+	width: 40%;
+}
+.item-edit-price-form{
+	width: 40%;
+}
+.item-delete{
+	padding-top: 40px;
+}
+.item-delete-link{
+	color: red;
+}
+
+.item-trainer-history-area{
+	height: 505px;
+	height: -webkit-calc(100vh - 70px) ;
+    height: calc(100vh - 70px) ;
+}
+.item-trainer-history-title{
+	padding: 10px 0;
+	font-size: 2rem;
+	text-align: center;
+}
+.item-trainer-history-content{
+	padding: 5px 0;
+}
+.item-trainer-history-username{
+	padding-bottom: 2px;
+	color: #228b22;
+}
+.item-trainer-history-quantity{
+	display: inline-block;
+}
+.item-trainer-history-price{
+	display: inline-block;
+	color: #8b0000;
+}
+.item-trainer-history-date{
+	display: inline-block;
+}
+/* --item/new --*/
+.item-new{
+	width: 70%;
+	margin: 0 auto;
+}
+.item-new-area{
+	width: 60%;
+	margin: 40px auto;
+	padding: 40px;
+	border:1px solid black;
+	text-align: center;
+}
+.item-new-form-area{
+	padding: 10px 0;
+}
+.item-new-price-form-area{
+	padding: 0 10px;
+	display: inline-block;
+}
+.item-new-stock-form-area{
+	padding: 0 10px;
+	display: inline-block;
+}
+.item-new-itemname-form{
+	width: 100%;
+}
+.item-new-description-form{
+	width: 100%;
+	height: 300px;
+	font-size: 2rem;
+}
+/* --item/new/step2 --*/
+.js-category-title{
+	font-size: 1.6rem;
+	padding-bottom: 5px;
+}
+.category-unform-btn{
+	display: inline-block;
+	padding-left: 10px;
+	color: #0066c0;
+	transition: .1s
+}
+.category-unform-btn:hover{
+	cursor: pointer;
+	color: #ff8c00;
+}
+.item-new-keyword-form{
+	width: 100%;
+	height: 150px;
+}
+/* --item/new/step3 -- */
+.img-form-area{
+	padding: 20px 0;
+}
+.img-form-info{
+	font-size: 1.4rem;
+	padding-bottom: 5px;
+}

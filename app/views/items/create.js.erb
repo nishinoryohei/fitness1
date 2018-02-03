@@ -1,11 +1,9 @@
 $('#category-form').html("<%= j (render 'form') %>");
 $(this).blur() ;
-// $("body").append('<div id="mod-overlay"></div>');
-$("#mod-overlay").fadeIn("slow");
+$("#modal-overlay").fadeIn("slow");
 $("#mod-content").fadeIn("slow");
 $("#category-submit").unbind().click(function(){
-	$("#mod-content,#mod-overlay").fadeOut("slow",function(){
-	$("#mod-overlay").remove();
+	$("#mod-content").fadeOut("slow",function(){
 	});
 });
 

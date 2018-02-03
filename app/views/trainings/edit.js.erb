@@ -1,5 +1,4 @@
-
-$('#training-update').html("<%= j (render 'form') %>");
+$('#training-update').html("<%= j (render 'update') %>");
 $(this).blur() ;
 $("body").append('<div id="modal-overlay"></div>');
 $("#modal-overlay").fadeIn("slow");
@@ -17,7 +16,7 @@ document.getElementById('btn').addEventListener('click', function(){
     var point = document.getElementById('point')
     point.textContent = result
     var submit = document.getElementById('training-submit');
-	submit.style.display = 'block';
+	submit.style.display = 'inline-block';
 },false);
 
 var scoreCheck = function(score){

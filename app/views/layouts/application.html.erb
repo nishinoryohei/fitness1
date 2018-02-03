@@ -13,13 +13,44 @@
   </head>
 
   <body>
-    <header class="login-header">
+    <header class="header">
     <h1 class="title">Fitness</h1>
     <% if user_signed_in? %>
-      <ul class="header-nav">
-        <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path,method: :delete %>|</li>
-      </ul>
+      <div class="header-logout-area">
+        <%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: 'header-logout' %>
+      </div>
+      <% if current_user.trainer == true %>
+        <%= link_to '受信BOX', inbox_user_path(current_user) %>
+        <%= link_to 'アイテム一覧', items_path %>
+        <%= link_to '出品', new_item_path %>
+        <%= link_to 'オーダー確認', orders_path %>
+      <% else %>
+        <div class= "header-user-menu-area">
+          <div class="header-user-menu">
+            <%= link_to inbox_user_path(current_user),class: 'header-user-link' do %>
+              <p class="header-user-link-name">contact</p>
+              <p class="header-user-link-name-jp"> <i class="fa fa-envelope" aria-hidden="true"></i>受信BOX</p></a>
+          <% end %>
+          </div>
+          <div class="header-user-menu">
+            <%= link_to items_path, class: 'header-user-link' do %>
+              <p class="header-user-link-name">SHOP</p>
+              <p class="header-user-link-name-jp"><i class="fa fa-shopping-basket" aria-hidden="true"></i>アイテム一覧</p></a>
+            <% end %>
+         </div>
+          <div class="header-user-menu">
+            <%= link_to new_personal_path, class: 'header-user-link' do %>
+              <p class="header-user-link-name">purchase</p>
+              <p class="header-user-link-name-jp"><i class="fa fa-shopping-cart" aria-hidden="true"></i>購入ページへ</p></a>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% else %>
+      <div class="header-session-area">
+      <%= link_to 'ログイン', new_user_session_path,class: 'header-login-link' %>
+      <%= link_to '新規会員登録', new_user_registration_path,class: 'header-signup-link' %>
+      </div>
     <% end %>
     </header>
     <%= yield %>

@@ -1,21 +1,24 @@
-<div id="mod-overlay"></div>
+<div id="modal-overlay"></div>
 <div id="mod-content">
-	<h1>ステップ２</h1>
-	<label><input type="radio" name="genre" value='food' 
+	<h2>ステップ２</h2>
+	<div class="js-content">
+	<p class="js-category-title">カテゴリ設定</p>
+	<label class="js-labels"><input class="js-radios" type="radio" name="genre" value='food' 
 		onclick="subForm()">食品</label>
-	<label><input type="radio" name="genre" value='equipment' 
+	<label class="js-labels"><input class="js-radios" type="radio" name="genre" value='equipment' 
 		onclick="subForm()">器具</label>
-	<label><input type="radio" name="genre" value='clothes' 
+	<label class="js-labels"><input class="js-radios" type="radio" name="genre" value='clothes' 
 		onclick="subForm()">洋服</label>
-	<label><input type="radio" name="genre" value='other' 
+	<label class="js-labels"><input class="js-radios" type="radio" name="genre" value='other' 
 		onclick="subForm()">その他</label>
+	</div>
 <div id="sub-form-food">
 	食品：
 	<label><input type="radio" name="genre" value='supplement'>サプリメント</label>
 	<label><input type="radio" name="genre" value='protein'>プロテイン</label>
 	<label><input type="radio" name="genre" value='diet'>ダイエット食品</label>
 	<label><input type="radio" name="genre" value='drink'>ドリンク</label>
-	<a onclick="unForm('food')">↑</a>
+	<p class="category-unform-btn"  onclick="unForm('food')">↑</p>
 </div>
 
 <div id="sub-form-equipment">
@@ -24,7 +27,7 @@
 	<label><input type="radio" name="genre" value='beauty'>美容</label>
 	<label><input type="radio" name="genre" value='health'>健康</label>
 	<label><input type="radio" name="genre" value='life'>生活</label>
-	<a onclick="unForm('equipment')">↑</a>
+	<p class="category-unform-btn"  onclick="unForm('equipment')">↑</p>
 </div>
 
 <div id="sub-form-clothes">
@@ -33,7 +36,7 @@
 	<label><input type="radio" name="genre" value='man'>男性</label>
 	<label><input type="radio" name="genre" value='children'>子供</label>
 	<label><input type="radio" name="genre" value='big'>ビッグサイズ</label>
-	<a onclick="unForm('clothes')">↑</a>
+	<p class="category-unform-btn"  onclick="unForm('clothes')">↑</p>
 </div>
 
 <div id="sub-form-other">
@@ -42,17 +45,21 @@
 	<label><input type="radio" name="genre" value='service'>サービス</label>
 	<label><input type="radio" name="genre" value='guidance'>施設</label>
 	<label><input type="radio" name="genre" value='gym'>ジム</label>
-	<a onclick="unForm('other')">↑</a>
+	<p class="category-unform-btn"  onclick="unForm('other')">↑</p>
 </div>
+<div class="js-content">
 	<%= form_for(@category,remote: true) do |f| %>
-	<p>キーワード検索</p>
-		<%= f.text_area :keyword, placeholder: '(例）痩せる、筋トレ、体力' %>
+		<%= f.label "キーワード設定",class: 'js-labels' %>
+		<%= f.text_area :keyword, placeholder: '(例）痩せる、筋トレ、体力' ,class: 'item-new-keyword-form'%>
 		<%= f.hidden_field :item_id, value: @id %>
 		<%= f.hidden_field :genre %>
 		<div id="c-submit">
-		<%= f.submit 'ステップ３へ', id: 'category-submit' %>
+		<div class="js-submit-area">
+		<%= f.submit 'ステップ３へ', id: 'category-submit',class: 'submit' %>
+		</div>
 	</div>
 	<% end %>
+</div>
 </div>
 <div id="thumbnail-form"></div>
 <style type="text/css">

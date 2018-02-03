@@ -1,31 +1,53 @@
-<h1>詳細ページ</h1>
-<div>
-<h2><%= @item.name %></h2>
+<div class="item-show">
 <% if current_user.trainer == true %>
 	<%= render 'trainer' %>
 <% else %>
-	<%= @item.description %>
-	:価格
-	<%= @item.price %>
-	在庫：
-	<%= @item.stock %>
-	<%= score_average @reviews %>
+<div class="item-show-left-area">
+	<p class="item-show-item-name"><%= @item.name %></p>
+	<p class="item-show-item-score">ユーザー評価：<%= score_average @reviews %>/5点</p>
+	<%= image_tag @item.thumbnails.first.image.url, class: 'item-show-item-img' %>
+</div>
+<div class="item-show-center-area">
+	<p class="item-show-item-description"><%= @item.description %></p>
+	<p class="item-show-item-price">￥<%= @item.price %></p>
+	<p class="item-show-item-stock">在庫<%= @item.stock %>個</p>
 	<%= form_for(@cart_item, url:item_cart_items_create_path(@item)) do |f| %>
-		<%= f.number_field :quantity,max: @item.stock, min:0 %>
-		<%= f.submit 'カートに入れる' %>
+	    <div class="item-show-cart-area">
+	    	<p class="item-show-cart-title">購入する
+	    		<i class="fa fa-shopping-cart " aria-hidden="true"></i>
+	    	</p>
+	    	<p class="item-show-cart-quantity-info">数量を選択してください</p>
+			<%= f.number_field :quantity,max: @item.stock, min:0, class: 'item-show-cart-quantity' %><br>
+			<%= f.submit 'カートに入れる', class: 'submit' %>
+		</div>
 	<% end %>
+</div>
+<div class="item-show-right-area">
+	<div class="item-show-review-area">
 	<% @reviews.each do |review| %>
-		<%= review.content %>
-		<%= review.user.name %>
+		<div class="item-show-review-comment-area">
+		<p class="item-show-review-username"><%= review.user.name %></p>
+		<p class="item-show-review-time"><%= review.created_at.strftime("%Y-%m-%d") %></p>
 		<% if review.user_id == current_user.id %>
-			<%= link_to '削除', review_path(review),method: :delete %>
+			<%= link_to '削除', review_path(review),method: :delete, class: 'review-comment-delete' %>
 		<% end %>
+		<p class="item-show-review-comment"><%= review.content %></p>
+		</div>
 	<% end %>
+	</div>
+	<div class="item-show-review-form-area">
 	<%= form_for(@review, url: item_reviews_create_path(@item)) do |f| %>
-		<%= f.text_area :content %>
+		<%= f.text_area :content, class: 'item-show-review-form' %>
+		<div class="item-show-review-score-area">
+		<p class="item-show-review-score-title">点数：</p>
 		<% [1,2,3,4,5].each do |num| %>
-		<%= f.radio_button :score, num %>
+			<%= f.radio_button :score, num %>
+			<%= f.label num %>
 		<% end %>
-		<%= f.submit 'レビュー' %>
+		</div>
+		<%= f.submit 'レビュー', class: 'submit' %>
 	<% end %>
+	</div>
+</div>
 <% end %>
+</div>

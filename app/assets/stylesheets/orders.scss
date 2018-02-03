@@ -1,3 +1,51 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order-index-order-area{
+	width: 90%;
+	margin: 0 auto
+}
+.order-index-username{
+	width: 15%;
+}
+.order-index-totalfee{
+	width: 10%;
+	color: #8b0000;
+}
+.order-index-date{
+	width: 10%;
+}
+.order-index-state{
+	width: 7%;
+	text-align: center;
+} 
+.order-index-city{
+	width: 18%;
+}
+.order-index-address{
+	width: 18%
+}
+.order-index-tel{
+	width: 10%;
+}
+.order-stil{
+	color: red;
+}
+.order-stil-link{
+	color: #0066c0;
+	transition: .1s
+}
+.order-stil-link:hover{
+	color: #ff8c00;
+}
+.order-already{
+	color: green;
+}
+.order-search-area{
+	padding: 20px 0;
+}
+.order-search-form-area{
+	display: inline-block;
+	padding: 0 10px;
+}

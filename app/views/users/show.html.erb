@@ -68,30 +68,40 @@
 		</div>
 	</div>
 </div>
+<div class="user-show-cart-area clearfix">
+	<div class="user-show-cart-title-area">
+	<p class="user-show-cart-title">カートに入っている商品</p>
+	</div>
+	<div class="user-show-cart-wrapper clearfix">
+	<% @cart_in_items.each do |item| %>
+		<div class="user-show-cart-content">
+		<%= link_to item.name,item_path(item.id), class: 'user-show-itemname' %>
+		<%= image_tag item.thumbnails.first.image.url , class: 'user-show-cart-img'%>
+		<p class="user-show-cart-price">￥<%= subtotal item %></p>
+		<p class="user-show-cart-number">カートに<%= purchase_number item %>個入っています</p>
+		<%= link_to 'カートから出す', item_cart_items_destroy_path(item.id),method: :delete ,class: 'user-show-cart-delete'%>
+		</div>
+	<% end %>
+	</div>
+	<div class="user-show-cart-total-area">
+		<p class="user-show-cart-total">合計￥<%= user_item_total_fee @user %></p>
+	</div>
+</div>
+
 <div class="user-show-recommend-title-area">
-	<h3 class="user-show-recommend-title">Featured Products</h3>
-	<p class="user-show-recommend-title-jp">あなたのオススメ商品</p>
+	<p class="user-show-recommend-title">Featured Products</p>
+	<p class="user-show-recommend-title-jp">オススメ商品</p>
 </div>
 <div class="user-show-recommend-area">
 	<div class="user-show-recommend-wrapper">
     <% recommended_items.limit(10).each do |item| %>
     	<div class="user-show-recommend-content">
-			<%= link_to item.name, item_path(item.id),class: 'user-show-recommend-itemname' %>
+			<%= link_to item.name, item_path(item.id),class: 'user-show-itemname' %>
 			<%= image_tag item.thumbnails.first.image.url,class: 'user-show-recommend-img' %>
-			<p class="user-show-recommend-price"><%= item.price %>円</p>
+			<p class="user-show-recommend-price">￥<%= item.price %></p>
 		</div>
 	<% end %>
 	</div>
 </div>
-	<% @cart_in_items.each do |item| %>
-		<div>
-		<%= item.name %>
-		<%= image_tag item.thumbnails.first.image.url %>
-		<%= purchase_number item %>個
-		<%= subtotal item %>円
-		<%= link_to 'カートから出す', item_cart_items_destroy_path(item.id),method: :delete %>
-		</div>
-	<% end %>
-	合計<%= user_item_total_fee @user %>円
 <% end %>
  

@@ -1,16 +1,37 @@
-<%= form_for(@item,method: :patch) do |f| %>
-	<%= f.text_area :description %>
-	<%= f.number_field :stock %>
-	<%= f.submit %>
-<% end %>
-<%= link_to '削除する', item_path(@item), method: :delete %> 
-＜購入履歴＞
-<%  @item.cart_items.each do |cart| %>
-	<div>
-	<%= cart.quantity %>個
-	<%= cart.quantity * @item.price %>円
-	<%= User.find(cart.user_id).name %>
-	<%= cart.created_at %>
+<div class="item-trainer-show">
+	<div class="item-show-left-area">
+	<p class="item-show-item-name"><%= @item.name %></p>
+	<%= image_tag @item.thumbnails.first.image.url, class: 'item-show-item-img' %>
 	</div>
-<% end %>
+	<div class="item-show-center-area">
+	<%= form_for(@item,method: :patch) do |f| %>
+		<%= f.text_area :description , class: 'item-edit-description-form'%>
+		<div class="item-edit-form-area">
+			<%= f.label "価格" %>
+			<%= f.number_field :price,min: 0 ,class: 'item-edit-price-form' %>
+		</div>
+		<div class="item-edit-form-area">
+		<%= f.label "在庫数" %>
+		<%= f.number_field :stock,min: 0 ,class: 'item-edit-stock-form' %>
+		</div>
+		<%= f.submit '更新', class: 'submit' %>
+	<% end %>
+	<div class="item-delete">
+	<%= link_to '削除する', item_path(@item), method: :delete,data: { confirm: '本当に削除しますか？' }, class: 'item-delete-link' %>
+	</div> 
+	</div>
+	<div class="item-show-right-area">
+		<div class="item-trainer-history-area">
+			<p class="item-trainer-history-title">購入履歴<p>
+			<%  @item.cart_items.each do |cart| %>
+			<div class="item-trainer-history-content">
+				<p class="item-trainer-history-username"><%= User.find(cart.user_id).name %></p>
+				<p class="item-trainer-history-quantity"><%= cart.quantity %>個</p>
+				<p class="item-trainer-history-price">￥<%= cart.quantity * @item.price %></p>
+				<p class="item-trainer-history-date"><%= cart.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 

@@ -1,3 +1,100 @@
 // Place all the styles related to the personals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.personal-new-area{
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 100px;
+	text-align: center;
+}
+.personal-new-create-area{
+	padding: 30px 0 ;
+	border: 1px solid black;
+	border-radius: 30px;
+}
+.personal-new-form-title{
+	font-size: 2rem;
+}
+.personal-new-form-area{
+	padding: 10px 0;
+}
+.personal-new-form-label{
+	display: block;
+	font-size: 1.7rem;
+	padding-bottom: 5px;
+}
+.personal-new-select-area{
+	padding-top: 20px;
+}
+.personal-new-select-label{
+	padding-right: 10px;
+	font-size: 2rem;
+}
+.personal-new-form-submit{
+	padding: 10px 0 ;
+}
+.personal-new-form-area .personal-form{
+	width: 400px;
+}
+.personal-new-wrapper{
+	padding: 20px;
+	border: 1px solid black;
+}
+.personal-new-personal-area{
+	float: left;
+	width: 50%;
+	padding: 10px;
+	border: 1px solid black;
+	font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+/*	background-color: #fff799;*/
+	text-align: left;
+}
+.personal-new-personal-info-area{
+	padding: 20px 0 ;
+}
+.personal-new-personal-label{
+	display: inline-block;
+	font-size: 1.4rem;
+}
+.personal-new-personal-info{
+	display: inline-block;
+	font-size: 2rem;
+}
+.personal-new-personal-alert{
+	padding: 10px 0;
+	color: red;
+}
+.personal-new-payment-area{
+	float: left;
+	width: 50%;
+	padding-top: 50px;
+}
+.personal-new-order-area{
+	padding: 30px 0;
+	width: 80%;
+	margin: 0 auto;
+}
+.order-title{
+	padding: 5px 0 ;
+	font-size: 2.5rem;
+}
+.order-title-jp{
+	padding: 5px 0 ;
+	font-size: 1.6rem;
+}
+.order-bank{
+	-webkit-appearance: none;
+    border-radius: 2px;
+    display: inline-block;
+    padding: .5em 1em;
+    font-size: 1.6rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #2FA0DC;
+    color: #fff;
+    background-color: #198fcc;
+    background-image: linear-gradient(#35a9e6 0,#319cd3 48%,#2590c7 100%);
+}

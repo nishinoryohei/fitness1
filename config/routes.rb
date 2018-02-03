@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :reviews, only:[:destroy]
   resources :bodies
-  resources :comments,only:[:new,:create]
+  resources :comments
   if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end

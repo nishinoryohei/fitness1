@@ -1,5 +1,19 @@
 class OrdersController < ApplicationController
 	include UsersHelper
+	def index
+		begin
+		dates =  Date.civil(params[:"date(1i)"].to_i,
+		  					params[:"date(2i)"].to_i,
+		  					params[:"date(3i)"].to_i)
+	 	rescue
+		 	dates = nil
+		end 
+ 		@orders = Order.all
+ 						.search_create_date(dates.to_s.presence)
+						.search_state(params[:state].presence)
+						.search_user_name(params[:user_name].presence)
+						.still_payment_orders(params[:payment_status].presence)
+	end
 	def create
 		if create_order_params false
 			@item_ids = CartItem.current_cart_in_item_id current_user.id

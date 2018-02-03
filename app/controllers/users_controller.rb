@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 		@user = User.find(current_user.id)
 		#--trainer--
 		@exhibit_item = Item.where(user_id: @user.id).page(params[:page]).per(15).includes(:category)
-		@still_payment_orders = Order.where(payment_status: false)
+							.cheaper(params[:max_price].presence)
+		            		.expensive(params[:min_price].presence)
+		            		.search_keyword(params[:keyword].presence)
+		            		.sort_by_genre(params[:genre].presence)
+		            		.soldout_items(params[:boolean].presence)
 		#--customer--
 		item_ids = CartItem.current_cart_in_item_id @user.id
 		@cart_in_items = Item.where(id: item_ids)

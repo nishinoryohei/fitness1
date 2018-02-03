@@ -1,0 +1,2 @@
+class OrderSearchDate < ApplicationRecord
+end

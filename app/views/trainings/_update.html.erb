@@ -1,4 +1,4 @@
-<form>
+<!-- <form>
 	<div>
 		<label><input type="checkbox" name="muscle" value="1">上体起こし15~20回×３セット</label>
 		<label><input type="checkbox" name="muscle" value="2">腕立て伏せ10回×3セット</label>
@@ -28,4 +28,39 @@
 	#training-submit{
 		display: none;
 	}
-</style>
+</style> -->
+<div id="modal-overlay"></div>
+<div id="modal-content">
+<div class="js-title-area">
+	<h2 class="user-training-today">Training report</h2>
+</div>
+<form class="js-content">
+	<div class="select-area">
+		<p class="training-group-name" >:筋トレ</p>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="muscle" value="1">上体起こし15~20回×３セット</label>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="muscle" value="2">腕立て伏せ10回×3セット</label>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="muscle" value="2">スクワット10回×3セット</label>
+	</div>
+	<div class="select-area">
+		<p class="training-group-name" >:有酸素運動</p>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="aerobic" value="1">ウオーキング30分</label>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="aerobic" value="2">ジョギング30分</label>
+		<label class="js-labels training-labels" ><input class="js-checkboxs" type="checkbox" name="aerobic" value="3">ランニング30分</label>
+	</div>
+	<div class="select-area">
+		<p class="training-group-name" >:摂取カロリー</p>
+		<label class="js-labels training-labels" ><input type="radio" class="js-radios" name="calorie" value="1">2300kcal</label>
+		<label class="js-labels training-labels" ><input type="radio" class="js-radios" name="calorie" value="2">2000kcal</label>
+		<label class="js-labels training-labels" ><input type="radio" class="js-radios" name="calorie" value="3">1800kcal</label>
+		<label class="js-labels training-labels" ><input type="radio" class="js-radios" name="calorie" value="4">1500kcal</label>
+	</div>
+	<div class="js-result-area training-result-area">
+		<input class="submit" type="button" name="btn" id="btn" value="ポイントを出す">
+		<div class="js-result">あなたの運動評価は<span id="point"></span>ポイントです</div>
+	</div>
+</form>
+<%= form_for(@last_training,url: :user_trainings, method: :patch) do |f| %>
+	<%= f.hidden_field :progress %>
+	<%= f.submit '確認して送信する', id: 'training-submit',class: 'submit'%>
+<% end %>
+</div>

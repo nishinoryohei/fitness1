@@ -1,9 +1,13 @@
 <div id="modal-overlay"></div>
 <div id="modal-content">
-	<h1>ステップ３</h1>
+	<h2 >ステップ３</h2>
+	<div class="img-form-area">
+		<p class="img-form-info">５枚まで選択可能です<br>
+		１枚目に選択した画像がメインになります</p>
 	<%= form_for(@thumbnail) do |f| %>
-		<%= f.file_field :image %>
+		<%= f.file_field :image, multiple: true %>
 		<%= f.hidden_field :item_id, value: @id %>
-		<%= f.submit '出品' %>
+		<%= f.submit '出品', class: 'submit' %>
 	<% end %>
+	</div>
 </div>

@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 		end
 	end
 	def index 
-		@items = Item.page(params[:page]).includes(:category)
+		@items = Item.page(params[:page]).per(27).includes(:category)
 		             .cheaper(params[:max_price].presence)
 		             .expensive(params[:min_price].presence)
 		             .search_keyword(params[:keyword].presence)
@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
 		@cart_item = CartItem.new
 		@review = Review.new
 		@reviews = Review.where(item_id: @item.id)
-
 	end
 	def update
 		if @item.update(item_params)

@@ -2,6 +2,7 @@ class PersonalsController < ApplicationController
 	before_action :set_personal, only:[:edit,:update]
 	def new
 		@personal = Personal.new
+		@current_user_personal = Personal.find_by(user_id: current_user.id)
 	end
 	def create
 		@personal = Personal.new(personal_params)

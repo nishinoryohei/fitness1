@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :cart_items
   has_many :reviews
+  has_many :orders
   has_many :server, foreign_key: 'server_id', 
             class_name: 'Comment', dependent: :destroy
   has_many :receiver, foreign_key: 'receiver_id',

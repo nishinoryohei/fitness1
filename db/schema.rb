@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120074715) do
+ActiveRecord::Schema.define(version: 20180120034009) do
 
   create_table "bodies", force: :cascade do |t|
     t.decimal "weight", precision: 3, scale: 1
@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20180120074715) do
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "total_fee"
-    t.boolean "payment_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "payment_status", default: false
   end
 
   create_table "personals", force: :cascade do |t|

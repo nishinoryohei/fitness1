@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
 		@comment.server_id = current_user.id
 		if @comment.save
 			@talk = talk_content @comment.receiver_id
-			#talk_contestメソッドはにapplication_controllerに記載
-			render 'users/_talk-room'
+			#talk_contentメソッドはにapplication_controllerに記載
+			redirect_to inbox_user_path(current_user.id)
 		else
 			redirect_to inbox_user_path(current_user.id) 
 		end
