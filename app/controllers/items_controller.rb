@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	before_action :sold_out, only:[:show]
+	before_action :sold_out_item_remove, only:[:show]
 	before_action :set_item, only:[:show,:edit,:update,:destroy]
 	before_action :trainer_only, only:[:new,:create,:update,:destroy]
 	def new
@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
 				format.js
 			end
 		else
+			flash[:error] = '入力が不十分です'
 			redirect_to new_item_path
 		end
 	end
@@ -38,7 +39,7 @@ class ItemsController < ApplicationController
 	end
 	def update
 		if @item.update(item_params)
-			redirect_to user_path(current_user)
+			redirect_to item_path(@item)
 		else
 			redirect_to item_path(@item)
 		end
@@ -54,7 +55,7 @@ class ItemsController < ApplicationController
 	def item_params
 		params.require(:item).permit(:name,:description,:price,:stock)
 	end
-	def sold_out
+	def sold_out_item_remove
 		set_item
 		if @item.stock == 0 && current_user.trainer == false
 			redirect_to items_path

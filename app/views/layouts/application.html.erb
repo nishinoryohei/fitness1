@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   </head>
 
   <body>
@@ -20,10 +21,33 @@
         <%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: 'header-logout' %>
       </div>
       <% if current_user.trainer == true %>
-        <%= link_to '受信BOX', inbox_user_path(current_user) %>
-        <%= link_to 'アイテム一覧', items_path %>
-        <%= link_to '出品', new_item_path %>
-        <%= link_to 'オーダー確認', orders_path %>
+      <div class="header-user-menu-area">
+        <div class="header-user-menu">
+          <%= link_to  inbox_user_path(current_user), class: 'header-user-link' do %>
+          <p class="header-user-link-name">受信BOX</p>
+          <% end %>
+        </div>
+        <div class="header-user-menu">
+          <%= link_to items_path , class: 'header-user-link' do %>
+            <p class="header-user-link-name">アイテム一覧</p>
+          <% end %>
+        </div>
+        <div class="header-user-menu">
+          <%= link_to new_item_path , class: 'header-user-link' do %>
+            <p class="header-user-link-name">出品</p>
+          <% end %>
+        </div>
+        <div class="header-user-menu">
+          <%= link_to orders_path , class: 'header-user-link' do %>
+            <p class="header-user-link-name">オーダー確認</p>
+          <% end %>
+        </div>
+        <div class="header-user-menu">
+          <%= link_to root_path , class: 'header-user-link' do %>
+            <p class="header-user-link-name">アイテム管理</p>
+          <% end %>
+        </div>
+      </div>
       <% else %>
         <div class= "header-user-menu-area">
           <div class="header-user-menu">
@@ -44,6 +68,12 @@
               <p class="header-user-link-name-jp"><i class="fa fa-shopping-cart" aria-hidden="true"></i>購入ページへ</p></a>
             <% end %>
           </div>
+          <div class="header-user-menu">
+            <%= link_to root_path, class: 'header-user-link' do %>
+              <p class="header-user-link-name">my page</p>
+              <p class="header-user-link-name-jp"><i class="fas fa-user"></i>マイページ</p></a>
+            <% end %>
+          </div>
         </div>
       <% end %>
     <% else %>
@@ -53,6 +83,16 @@
       </div>
     <% end %>
     </header>
+      <% unless flash[:success].nil? %>
+        <div class="message-area success">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+      <% unless flash[:error].nil? %>
+        <div class="message-area error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
     <%= yield %>
   </body>
 </html>

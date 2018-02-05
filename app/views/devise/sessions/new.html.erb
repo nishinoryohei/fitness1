@@ -10,18 +10,10 @@
         <%= f.label 'name',class: 'newuser-form-label' %><br/>
         <%= f.text_field :name, placeholder: '(例）山田　太郎',class: 'short-form'%>
       </div>
-
       <div class="newuser-form-area">
         <%= f.label 'password',class: 'newuser-form-label' %><br/>
         <%= f.password_field :password, placeholder: '6文字以上',class: 'short-form'%>
       </div>
-
-<!--       <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div> -->
-      <% end %>
       <div>
         <%= f.submit "ログイン" ,class: 'submit'%>
       </div>
@@ -65,3 +57,6 @@
   <%= link_to 'signup',new_user_registration_path,class: 'signup-link' %>
   <p class="signup-link-jp">新規会員登録はこちら</p>
 </div>
+<footer class="footer">
+  <p class="footer-copy">copyright©hogefitness</p>
+</footer>

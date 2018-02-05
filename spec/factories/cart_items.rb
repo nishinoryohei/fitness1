@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :cart_item, class: CartItem do
-    item_id 1
-    user_id 1
+    item_id 2
+    user_id 3
     quantity 1
     is_purchase false
   end

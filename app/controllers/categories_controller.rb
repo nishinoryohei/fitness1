@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
 	   	else
 	   		@item = Item.first
 	   		@item.delete
+	   		flash[:error] = 'カテゴリを選択してください'
 	   		redirect_to new_item_path
 		end
 	end

@@ -1,9 +1,9 @@
 <div class="user-talkroom-area" id="scroll">
 <div id="comment-form"></div>
 <% @talk.each do |c| %>
-	<% if c.server_id == @user.id %>
+	<% unless c.server_id == @user.id %>
 		<div class="user-talkroom-comment-area left clearfix">
-			<p class="user-talkroom-username"><%= current_user.name %></p>
+			<p class="user-talkroom-username"><%= @user.name %></p>
 			<div class="user-comment-balloon left-balloon">
 				<p class="user-talkroom-comment"><%= c.content %></p>
 			</div>
@@ -13,7 +13,7 @@
 			<div class="user-comment-balloon right-balloon">
 				<p class="user-talkroom-comment"><%= c.content %></p>
 			</div>
-			<p class="user-talkroom-username"><%= @user.name %></p>
+			<p class="user-talkroom-username"><%= current_user.name %></p>
 		</div>
 	<% end %>
 <% end %>

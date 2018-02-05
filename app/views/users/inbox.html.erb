@@ -1,11 +1,13 @@
 <div class="user-inbox-menu clearfix">
 <div class="user-inbox-sidemenu">
 	<% @during_a_call.each do |sender| %>
-	<div>
+	<div class="user-inbox-sidemenu-user-area">
 		<%= link_to sender.name, inbox_show_user_path(sender.id),remote: true,class: 'user-inbox-sidemenu-user' %>
 	</div>
 	<% end %>
-	<%= link_to 'コメント' , new_comment_path, remote:true %>
+	<div class="user-inbox-sidemenu-submit-area">
+	<%= link_to 'コメント' , new_comment_path, remote:true, class: 'submit' %>
+	</div>
 </div>
 <div id="talk-room"></div>
 <div id="comment-form"></div>

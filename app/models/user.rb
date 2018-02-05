@@ -14,6 +14,8 @@ class User < ApplicationRecord
             class_name: 'Comment', dependent: :destroy
   has_many :receiver, foreign_key: 'receiver_id',
             class_name: 'Comment', dependent: :destroy
+  validates :email, presence: true
+  validates :name, presence: true, uniqueness: true
   def self.trainers
   	select{|f| f.trainer == true }
   end

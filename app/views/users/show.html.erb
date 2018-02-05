@@ -43,7 +43,7 @@
 		<%= weight_chart %>
 	</div>
 </div>
-<div class="user-show-menu-area clearfixc">
+<div class="user-show-menu-area clearfix">
 	<div class="user-show-menu-warpper">
 		<div class="user-show-menu-content">
 			<%= link_to inbox_user_path(current_user),class: 'user-show-menu-link' do %>
@@ -73,14 +73,18 @@
 	<p class="user-show-cart-title">カートに入っている商品</p>
 	</div>
 	<div class="user-show-cart-wrapper clearfix">
-	<% @cart_in_items.each do |item| %>
-		<div class="user-show-cart-content">
-		<%= link_to item.name,item_path(item.id), class: 'user-show-itemname' %>
-		<%= image_tag item.thumbnails.first.image.url , class: 'user-show-cart-img'%>
-		<p class="user-show-cart-price">￥<%= subtotal item %></p>
-		<p class="user-show-cart-number">カートに<%= purchase_number item %>個入っています</p>
-		<%= link_to 'カートから出す', item_cart_items_destroy_path(item.id),method: :delete ,class: 'user-show-cart-delete'%>
-		</div>
+	<% if @cart_in_items.present? %>
+		<% @cart_in_items.each do |item| %>
+			<div class="user-show-cart-content">
+			<%= link_to item.name,item_path(item.id), class: 'user-show-itemname' %>
+			<%= image_tag item.thumbnails.first.image.url , class: 'user-show-cart-img'%>
+			<p class="user-show-cart-price">￥<%= subtotal item %></p>
+			<p class="user-show-cart-number">カートに<%= purchase_number item %>個入っています</p>
+			<%= link_to 'カートから出す', item_cart_items_destroy_path(item.id),method: :delete ,class: 'user-show-cart-delete'%>
+			</div>
+		<% end %>
+	<% else %>
+		<p>カートに商品が入っていません</p>
 	<% end %>
 	</div>
 	<div class="user-show-cart-total-area">
@@ -104,4 +108,7 @@
 	</div>
 </div>
 <% end %>
+<footer class="footer">
+    <p class="footer-copy">copyright©hogefitness</p>
+</footer>
  

@@ -3,6 +3,7 @@ class Body < ApplicationRecord
 	belongs_to :user
 	validates :weight, presence: true
 	validates :height, presence: true
+	validates :bmi, presence: true
 	def self.chart_weight user_id
 		array = select(:created_at, :weight).where(user_id: user_id).limit(8).map{
 			|i| [ i[:created_at].strftime('%m/%d'),i[:weight] ]

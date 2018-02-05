@@ -37,8 +37,8 @@ RSpec.describe TrainingsController, type: :controller do
 				@training = attributes_for(:training)
 				post :create, params:{ user_id: 1, training: @training }
 			end
-			it 'saveしてuser/showページにリダイレクトする' do
-				expect(response).to redirect_to user_path(id: 1)
+			it 'saveしてnew_user_trainings_pathへリダイレクトすること' do
+				expect(response).to redirect_to new_user_trainings_path
 			end
 			it 'データベースに登録されること' do
 				expect{
@@ -51,8 +51,8 @@ RSpec.describe TrainingsController, type: :controller do
 				@invalid_training = attributes_for(:invalid_training)
 				post :create, params:{ user_id: 1, training: @invalid_training }
 			end
-			it 'new.jsにrenderすること' do
-				expect(response).to render_template 'new.js'
+			it 'new_user_trainings_pathへリダイレクトすること' do
+				expect(response).to redirect_to new_user_trainings_path
 			end
 			it 'データベースに登録されないこと' do
 				expect{
@@ -82,11 +82,11 @@ RSpec.describe TrainingsController, type: :controller do
 				@training = attributes_for(:training)
 				patch :update, params:{ user_id: 1, training: @training }
 			end
-			it 'updateしてuser/showページにリダイレクトすること' do
-				expect(response).to redirect_to user_path(id: 1)
+			it 'updateしてnew_user_traings_pathへリダイレクトすること' do
+				expect(response).to redirect_to new_user_trainings_path
 			end
 			it 'データベースが更新されること' do
-				expect(Training.last.goal).to eq 1
+				expect(Training.first.goal).to eq 1
 			end
 		end
 		context '無効なパラメータの場合' do
@@ -94,11 +94,11 @@ RSpec.describe TrainingsController, type: :controller do
 				@invalid_training = attributes_for(:invalid_training)
 				patch :update, params:{ user_id: 1, training: @invalid_training}
 			end
-			it 'edit.jsにrenderすること' do
-				expect(response).to render_template 'edit.js'
+			it 'new_user_trainings_pathへリダイレクトすること' do
+				expect(response).to redirect_to new_user_trainings_path
 			end
 			it 'データベースに登録されないこと' do
-				expect(Training.first.progress).to eq 3
+				expect(Training.last.progress).to eq 3
 			end
 		end
 	end

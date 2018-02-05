@@ -8,16 +8,21 @@ class PersonalsController < ApplicationController
 		@personal = Personal.new(personal_params)
 		@personal.user_id = current_user.id
 		if @personal.save
+			flash[:success] = '住所を登録しました'
 			redirect_to new_personal_path
 		else
-			redirect_to root_path
+			flash[:error] = '入力が不十分です'
+			redirect_to new_personal_path
 		end
 	end
 	def edit	
 	end
 	def update
-		@personal.update(personal_params)
-		redirect_to new_personal_path
+		if @personal.update(personal_params)
+			redirect_to new_personal_path
+		else
+			redirect_to new_personal_path
+		end
 	end
 	private
 	def personal_params

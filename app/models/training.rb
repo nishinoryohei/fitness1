@@ -1,8 +1,6 @@
 class Training < ApplicationRecord
 	default_scope -> {order(created_at: :desc)}
 	belongs_to :user
-	validates :progress, presence: true
-	validates :goal, presence: true
 	#---グラフのパラメータ---
 	def self.chart_goal user_id
 		array = select(:created_at, :goal).where(user_id: user_id).limit(8).map{

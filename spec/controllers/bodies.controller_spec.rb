@@ -30,7 +30,7 @@ RSpec.describe BodiesController, type: :controller do
 			end
 			it 'saveしてuser/showページにリダイレクトする' do
 				post :create, params:{ user_id: 1, body: @body }
-				expect(response).to redirect_to user_path(id: 1)
+				expect(response).to redirect_to root_path
 			end
 			it 'データベースにbodyが登録されること' do
 				expect{
@@ -42,9 +42,9 @@ RSpec.describe BodiesController, type: :controller do
 			before do
 				@invalid_body = attributes_for(:invalid_body)
 			end
-			it 'new.jsにrenderすること' do
+			it 'user/showページにリダイレクトする' do
 				post :create, params:{ user_id: 1, body: @invalid_body }
-				expect(response).to render_template 'new.js'
+				expect(response).to redirect_to root_path
 			end
 			it 'データベースにbodyが登録されないこと' do
 				expect{

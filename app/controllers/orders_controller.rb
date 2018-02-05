@@ -21,8 +21,10 @@ class OrdersController < ApplicationController
 			user_ids = @items.map(&:user_id).uniq
 			UserMailer.order_customer(current_user,@items).deliver
 			order_item_purchased current_user
+			flash[:success] = '商品を注文しました'
 			redirect_to root_path
 		else
+			flash[:error] = '商品の注文に失敗しました'
 			redirect_to root_path
 		end
 	end
@@ -40,7 +42,8 @@ class OrdersController < ApplicationController
     	:currency => 'jpy',
 		)
     	order_item_purchased current_user
-		redirect_to root_path, notice: "支払いが完了しました"
+    	flash[:success] = 'カードで支払いしました'
+		redirect_to root_path
 	end
 	private
 	def create_order_params status

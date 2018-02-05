@@ -11,9 +11,11 @@ class BodiesController < ApplicationController
 		@body.user_id = current_user.id
 		if @body.save
 			user_bmi_evaluation
-			redirect_to user_path(current_user.id)
+			flash[:success] = '保存されました'
+			redirect_to root_path
 		else
-			render 'new.js'
+			flash[:error] = '身長、体重を入力してください'
+			redirect_to root_path
 		end
 	end
 	private

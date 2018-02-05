@@ -243,12 +243,30 @@
 }
 .user-inbox-sidemenu{
 	float: left;
+	overflow-y: scroll;
 	width: 17%;
 	height: 100%;
 	border-right: 1px solid black;
 }
+.user-inbox-sidemenu-user-area{
+	padding: 10px 0 10px 10px;
+}
 .user-inbox-sidemenu-user{
 	font-size: 2rem;
+	color: #0066c0;
+	transition: .1s
+}
+.user-inbox-sidemenu-user:hover{
+	color: #ff8c00;
+}
+.user-inbox-sidemenu-submit-area{
+	position: fixed;
+	width: 16.9%;
+	padding: 10px;
+	background-color: white;
+	z-index: 2;
+	text-align: center;
+	bottom: 0;
 }
 /*--user/talkroom--*/
 .user-talkroom-area{

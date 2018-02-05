@@ -2,10 +2,25 @@
 <% if current_user.trainer == true %>
 	<%= render 'trainer' %>
 <% else %>
+<div id='thumbnali-img'></div>
 <div class="item-show-left-area">
 	<p class="item-show-item-name"><%= @item.name %></p>
 	<p class="item-show-item-score">ユーザー評価：<%= score_average @reviews %>/5点</p>
-	<%= image_tag @item.thumbnails.first.image.url, class: 'item-show-item-img' %>
+	<% @item.thumbnails.each_with_index do |thumbnail, index| %>
+		<% if index == 0 %>
+			<div class="item-show-main-img">
+				<%= link_to thumbnail_path(thumbnail), remote:true do %>
+				<%= image_tag thumbnail.image.url, class: 'item-show-item-img' %>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="item-show-sub-img">
+				<%= link_to thumbnail_path(thumbnail), remote:true do %>
+					<%= image_tag thumbnail.image.url, class: 'item-show-item-img' %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
 </div>
 <div class="item-show-center-area">
 	<p class="item-show-item-description"><%= @item.description %></p>

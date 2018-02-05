@@ -41,7 +41,7 @@
 	<% @items.each do |item| %>
 		<% unless sold_out? item %>
 			<div class="item-index-items">
-				<% if item.thumbnails.empty? %>
+				<% unless item.thumbnails.empty? %>
 					<%= image_tag item.thumbnails.first.image.url,class: 'item-index-items-img' %>
 				<% else %>
 					<p>画像がありません</p>

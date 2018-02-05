@@ -25,40 +25,46 @@
 	<% end %>
 	</div>
 <% else %>
-<div class="personal-new-wrapper clearfix">
-<div class="personal-new-personal-area">
-	<div class="personal-new-personal-info-area">
-		<p class="personal-new-personal-label">都道府県：</p>
-		<p class="personal-new-personal-info" ><%= @current_user_personal.prefecture.name %></p>
-	</div>
-	<div class="personal-new-personal-info-area">
-		<p class="personal-new-personal-label">市区町村:</p>
-		<p class="personal-new-personal-info" ><%= @current_user_personal.city %></p>
-	</div>
-	<div class="personal-new-personal-info-area">
-		<p class="personal-new-personal-label">丁目、番地:</p>
-		<p class="personal-new-personal-info" ><%= @current_user_personal.address %></p>
-	</div>
-	<div class="personal-new-personal-info-area">
-		<p class="personal-new-personal-label">電話番号:</p>
-		<p class="personal-new-personal-info" ><%= @current_user_personal.tel %></p>
-	</div>
-	<p class="personal-new-personal-alert">住所にお間違いはありませんか？</p>
-		<%= link_to '※住所、電話番号変更', edit_personal_path(current_user.personal.id) ,class: 'submit personal-edit' %>
-</div>
-<div class="personal-new-payment-area">
-	<p class="order-title">payment<p>
-	<p class="order-title-jp">お支払い方法の選択</p>
-	<div class="personal-new-order-area">
-	<%= form_tag('orders/pay', method: :post) do %>
-   	<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_939c3cb277d12b7925cae1ab"></script>
+	<% if current_user.cart_items.first.is_purchase == true %>
+		<div class="personal-new-wrapper clearfix">
+			<div class="personal-new-personal-area">
+				<div class="personal-new-personal-info-area">
+					<p class="personal-new-personal-label">都道府県：</p>
+					<p class="personal-new-personal-info" ><%= @current_user_personal.prefecture.name %></p>
+				</div>
+				<div class="personal-new-personal-info-area">
+					<p class="personal-new-personal-label">市区町村:</p>
+					<p class="personal-new-personal-info" ><%= @current_user_personal.city %></p>
+				</div>
+				<div class="personal-new-personal-info-area">
+					<p class="personal-new-personal-label">丁目、番地:</p>
+					<p class="personal-new-personal-info" ><%= @current_user_personal.address %></p>
+				</div>
+				<div class="personal-new-personal-info-area">
+					<p class="personal-new-personal-label">電話番号:</p>
+					<p class="personal-new-personal-info" ><%= @current_user_personal.tel %></p>
+				</div>
+				<p class="personal-new-personal-alert">住所にお間違いはありませんか？</p>
+				<%= link_to '※住所、電話番号変更', edit_personal_path(current_user.personal.id) ,class: 'submit personal-edit' %>
+			</div>
+			<div class="personal-new-payment-area">
+				<p class="order-title">payment<p>
+				<p class="order-title-jp">お支払い方法の選択</p>
+				<div class="personal-new-order-area">
+					<%= form_tag('orders/pay', method: :post) do %>
+  	 					<script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_939c3cb277d12b7925cae1ab"></script>
+					<% end %>
+				</div>
+				<div class="personal-new-order-area">
+				<%= link_to '銀行振込', orders_path, method: :post, class: 'order-bank' %>
+				<p>※送信されたメールに記載された口座にお振込みください</p>
+				</div>
+			</div>
+		</div>
+	<% else %>
+		<div>
+			<p class="personal-order-unitem">カートに商品が入っていません</p>
+		</div>
 	<% end %>
-	</div>
-	<div class="personal-new-order-area">
-	<%= link_to '銀行振込', orders_path, method: :post, class: 'order-bank' %>
-	<p>※送信されたメールに記載された口座にお振込みください</p>
-	</div>
-</div>
 <% end %>
-</div>
 </div>

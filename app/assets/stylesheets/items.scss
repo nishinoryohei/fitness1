@@ -158,7 +158,14 @@ div[class^='genre']{
 .item-show-left-area{
 	float: left;
 	width: 42%;
+	height: 505px;
+	height: -webkit-calc(100vh - 70px) ;
+    height: calc(100vh - 70px) ;
+    overflow-y: scroll;
 	padding: 10px 30px;
+}
+.item-show-left-area::-webkit-scrollbar{
+ 	display:none;
 }
 .item-show-item-name{
 	font-size: 3rem;
@@ -168,6 +175,23 @@ div[class^='genre']{
 	font-size: 1.8rem;
 	padding-top: 10px;
 	padding-left: 30px;
+	padding-bottom: 5px;
+}
+.item-show-main-img{
+	width: 70%;
+	padding-top: 10px;
+	margin: 0 auto;
+}
+.item-show-sub-img{
+	display: inline-block;
+	width: 35%;
+	padding: 20px
+}
+.item-show-sub-img:nth-child(even){
+	float: left;
+	margin-left: 50px;
+}
+.item-show-sub-img:nth-child(odd){
 }
 .item-show-item-img{
 	width: 100%;

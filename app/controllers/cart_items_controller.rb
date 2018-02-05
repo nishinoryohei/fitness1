@@ -7,6 +7,7 @@ class CartItemsController < ApplicationController
 		if @cart_item.save
 			item = Item.find(params[:item_id])
 			item.update(stock: item.stock - @cart_item.quantity)
+			flash[:success] = 'カートに入れました'
 			redirect_to root_path
 		else
 			redirect_to item_path(params[:item_id])
@@ -17,6 +18,7 @@ class CartItemsController < ApplicationController
 		item = Item.find(params[:item_id])
 		item.update(stock: item.stock + @cart_item.map{|f| f.quantity}.sum)
 		@cart_item.delete_all
+		flash[:success] = 'カートから商品を削除しました'
 		redirect_to root_path
 	end
 	private

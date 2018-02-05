@@ -14,9 +14,11 @@ class TrainingsController < ApplicationController
 		chart_data
 		@training.user_id = current_user.id
 		if @training.save
-			redirect_to user_path(current_user.id)
+			flash[:success] = '目標を設定しました'
+			redirect_to new_user_trainings_path(current_user.id)
 		else
-		    render 'new.js'
+			flash[:error] = '入力が不十分です'
+			redirect_to new_user_trainings_path(current_user.id)		 
 		end
 	end
 	def edit
@@ -28,9 +30,11 @@ class TrainingsController < ApplicationController
 	def update
 		if @last_training.update(training_params)
 			@last_training.update(fruition: goal_achievement?(@last_training))
+			flash[:success] = '結果を更新しました'
 			redirect_to new_user_trainings_path(current_user.id)
 		else
-			render 'edit.js'
+			flash[:error] = '入力が不十分です'
+			redirect_to new_user_trainings_path(current_user.id)
 		end
 	end
 	private

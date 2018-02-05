@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy'
   end
   resources :categories, only:[:create]
-  resources :thumbnails, only:[:create]
+  resources :thumbnails, only:[:create, :show]
   resources :cart_items
   resources :orders 
   resources :personals do

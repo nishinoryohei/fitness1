@@ -29,8 +29,8 @@ RSpec.describe CommentsController, type: :controller do
 				@comment = attributes_for(:comment)
 				post :create, params:{ comment: @comment }
 			end
-			it 'saveしてuser/showへリダイレクトすること' do
-				expect(response).to render_template 'users/_talk-room'
+			it 'saveしてuser/_talk-roomを表示すること' do
+				expect(response).to redirect_to inbox_user_path(1)
 			end
 			it 'データベースに登録されること' do
 				expect{
