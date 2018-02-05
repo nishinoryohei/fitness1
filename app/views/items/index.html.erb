@@ -19,7 +19,7 @@
 		<div class="item-index-search-category">
 			<p>カテゴリごとに<br>絞り込む</p>
 		<div class="item-index-genre-area">
-		<% Category.genres.keys.zip(Category.genres.values).each do |genre,value| %>
+		<% Category.genres_i18n.invert.keys.zip(Category.genres.values).each do |genre,value| %>
 			<div id= 'genre<%= value %>' class='genre<%= value %>'>
 				<%= form.radio_button :genre,value,id:'genrebtn'+value.to_s %>
 				<%= genre %>
@@ -47,7 +47,7 @@
 					<p>画像がありません</p>
 				<% end %>
 				<%= link_to item.name, item_path(item), class: 'item-index-items-name' %>
-				<p class="item-index-items-genre">:<%= item.category.genre %>
+				<p class="item-index-items-genre">:<%= item.category.genre_i18n%>
 				<p class="item-index-items-description"><%= item.description %></p>
 				<p class="item-index-items-price">￥<%= item.price %></p>
 				<p class="item-index-items-stock"%>残り<%= item.stock %>個</p>

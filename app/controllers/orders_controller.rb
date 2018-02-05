@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 	 	rescue
 		 	dates = nil
 		end 
- 		@orders = Order.all
+ 		@orders = Order.page(params[:page]).per(30)
  						.search_create_date(dates.to_s.presence)
 						.search_state(params[:state].presence)
 						.search_user_name(params[:user_name].presence)

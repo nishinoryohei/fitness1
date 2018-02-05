@@ -1,27 +1,27 @@
 ja:
-  enums:
-    category:
-        genre:
-          food: '食品' 
-          supplement: 'サプリメント' 
-          protein: 'プロテイン' 
-          diet: 'ダイエット'
-          drink: 'ドリンク'
-          equipment: '器具'
-          muscle: '筋トレ'
-          beauty: '美容'
-          health: '健康'
-          life: '生活'
-          clothes: '衣服'
-          female: '女性'
-          man: '男性'
-          children: '子供'
-          big: '大きいサイズ'
-          other: 'その他'
-          ticket: 'チケット'
-          service: 'サービス'
-          guidance: '情報誌'
-          gym: 'ジム'
+ enums:
+  category:
+   genre:
+    food: '食品' 
+    supplement: 'サプリメント' 
+    protein: 'プロテイン' 
+    diet: 'ダイエット'
+    drink: 'ドリンク'
+    equipment: '器具'
+    muscle: '筋トレ'
+    beauty: '美容'
+    health: '健康'
+    life: '生活'
+    clothes: '衣服'
+    female: '女性'
+    man: '男性'
+    children: '子供'
+    big: '大きいサイズ'
+    other: 'その他'
+    ticket: 'チケット'
+    service: 'サービス'
+    guidance: '情報誌'
+    gym: 'ジム'
           
   devise:
     confirmations:

@@ -18,7 +18,7 @@
 		<div class="trainer-show-search-select-area">
  			<div class="trainer-show-genre-area">
 			<p>	ジャンル</p>
-			<% Category.genres.keys.zip(Category.genres.values).each do |genre,value| %>
+			<% Category.genres_i18n.invert.keys.zip(Category.genres.values).each do |genre,value| %>
 				<div id= 'genre<%= value %>' class='genre<%= value %>'>
 					<%= form.radio_button :genre,value,id:'genrebtn'+value.to_s %>
 					<%= genre %>
@@ -60,7 +60,7 @@
 			<% else %>
 				<td class="trainer-show-item-soldout">完売!</td>
 			<% end %>
-			<td class="trainer-show-item-genre"><%= item.category.genre %></td>
+			<td class="trainer-show-item-genre"><%= item.category.genre_i18n %></td>
 			<td class="trainer-show-item-keyword"><%= item.category.keyword %></td>
     	</tr>
 	<% end %>
