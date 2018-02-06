@@ -1,9 +1,26 @@
-<%= form_for(@personal) do |f| %>
-	<div>
-	<%= f.collection_select :state, JpPrefecture::Prefecture.all, :code, :name %>
-	<%= f.text_field :city, placeholder: '市区町村'%>
-	<%= f.text_field :address, placeholder: '丁目、番地' %>
-	<%= f.text_field :tel, placeholder: 'TEL:〇〇〇ー〇〇〇〇ー〇〇〇〇(間にハイフンを入れてください）'%>
+<div class="personal-new-area">	
+	<div class="personal-new-create-area">
+		<p class="personal-new-form-title">住所を入力してください</p>
+	<%= form_for(@personal) do |f| %>
+		<div class="personal-new-select-area">
+			<%= f.label '都道府県',class: 'personal-new-select-label' %>
+			<%= f.collection_select :state, JpPrefecture::Prefecture.all, :code, :name %>
+		</div>
+		<div class="personal-new-form-area">
+			<%= f.label '住所１',class: 'personal-new-form-label'%>
+			<%= f.text_field :city, placeholder: '市区町村', class: 'short-form personal-form'%>
+		</div>
+		<div class="personal-new-form-area">
+			<%= f.label '住所２',class: 'personal-new-form-label'%>
+			<%= f.text_field :address, placeholder: '丁目、番地', class: 'short-form personal-form' %>
+		</div>
+		<div class="personal-new-form-area">
+			<%= f.label '電話番号',class: 'personal-new-form-label'%>
+			<%= f.text_field :tel, placeholder: 'TEL:〇〇〇ー〇〇〇〇ー〇〇〇〇(間にハイフンを入れてください）', class: 'short-form personal-form' %>
+		</div>
+		<div class="personal-new-form-submit">
+			<%= f.submit '登録', class: 'submit' %>
+		</div>
+	<% end %>
 	</div>
-		<%= f.submit '登録' %>
-<% end %>
+</div>

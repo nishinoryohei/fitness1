@@ -45,7 +45,7 @@ RSpec.describe OrdersController, type: :controller do
 			expect(response.status).to eq 302
 		end
 		it 'root_pathへリダイレクトすること' do
-			expect(response).to redirect_to root_path
+			expect(response).to redirect_to orders_path
 		end
 		it 'データベースが更新されること' do
 			order.reload

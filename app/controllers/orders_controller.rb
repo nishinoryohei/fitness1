@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@order.update(payment_status: true)
-		redirect_to root_path
+		redirect_to orders_path
 	end
 	def pay
 		create_order_params true

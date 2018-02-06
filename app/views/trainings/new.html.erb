@@ -18,17 +18,17 @@
 						<%= link_to 'トレーニング報告', edit_user_trainings_path, remote: true,class: 'user-training-link' %>
 					</div>
 				<% end %>
-			<p class="user-training-headline">Result</p>
-			<div class="user-training-result-area">
-				<p class="user-training-result <%= training_color %>"><%= training_evaluation %><p>
-				<p class="user-training-result-jp"><%= training_evaluation_jp %></p>
-			</div>
 			<% else %>
 			<div class="proverb-area">
 				<p class="proverb"><%= proverb %></p>
 				<p class="athlete"><%= athlete %></p>
 			</div>
 			<% end %>
+			<p class="user-training-headline">Result</p>
+			<div class="user-training-result-area">
+				<p class="user-training-result <%= training_color %>"><%= training_evaluation %><p>
+				<p class="user-training-result-jp"><%= training_evaluation_jp %></p>
+			</div>
 		</div>
 	</div>
 	<%= video_tag("videos/gake.mp4", autoplay: true, loop: true, class: 'user-training-video') %>

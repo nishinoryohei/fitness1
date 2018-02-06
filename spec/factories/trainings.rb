@@ -5,8 +5,8 @@ FactoryBot.define do
     fruition false
   end
   factory :invalid_training, class: Training do
-  	progress nil
-  	gole '1'
-  	fruition false
+  	progress 'test'
+  	gole 'test'
+  	fruition 'test'
   end
 end
