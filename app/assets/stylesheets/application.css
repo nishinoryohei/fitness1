@@ -171,8 +171,9 @@ table td {
 }
 .login-video{
 	position: absolute;
-	width: 100%;
+	width: 80%;
 	height: 450px;
+	left:10%;
 }
 .video-logo{
 	position: absolute;

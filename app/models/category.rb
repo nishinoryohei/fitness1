@@ -10,7 +10,7 @@ class Category < ApplicationRecord
 	}
 	scope :genre_search, ->(genre){
 		unless nil?
-			where("'categories'.'genre' REGEXP ?", genre.to_s + '$')
+			where("categories . genre REGEXP ?", genre.to_s + '$')
 		end
 	}
 end

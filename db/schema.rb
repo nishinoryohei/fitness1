@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120034009) do
+ActiveRecord::Schema.define(version: 20180207064902) do
 
-  create_table "bodies", force: :cascade do |t|
-    t.decimal "weight", precision: 3, scale: 1
-    t.decimal "height", precision: 3, scale: 1
-    t.decimal "bmi", precision: 3, scale: 1
+  create_table "bodies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "weight", limit: 24
+    t.float "height", limit: 24
+    t.float "bmi", limit: 24
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
   end
 
-  create_table "cart_items", force: :cascade do |t|
+  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "item_id"
     t.integer "user_id"
     t.integer "quantity", default: 0
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "genre"
     t.integer "item_id"
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.string "keyword"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.integer "server_id"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "description"
     t.integer "price"
@@ -57,15 +57,15 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "total_fee"
+    t.boolean "payment_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "payment_status", default: false
   end
 
-  create_table "personals", force: :cascade do |t|
+  create_table "personals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "tel"
     t.integer "state"
     t.string "city"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "item_id"
     t.integer "user_id"
     t.text "content"
@@ -84,14 +84,14 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "thumbnails", force: :cascade do |t|
+  create_table "thumbnails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "image"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "trainings", force: :cascade do |t|
+  create_table "trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "progress", default: 0
     t.integer "goal", default: 0
     t.boolean "fruition", default: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20180120034009) do
     t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
