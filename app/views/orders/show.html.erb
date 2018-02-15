@@ -1,0 +1,27 @@
+<h2 class="trainer-title">オーダー詳細</h2>
+<div class="order-show-area">
+	<table>
+		<tr>
+			<th>商品名</th>
+			<th>商品説明</th>
+			<th>価格</th>
+			<th>購入個数</th>
+			<th>在庫</th>
+		</tr>
+	<% @order_items.zip(@quantitys).each do |item, quantity| %>
+		<tr class="trainer-show-item-content">
+			<td class="trainer-show-item-name">
+				<%= link_to item.name, item_path(item), class: 'trainer-show-item-name-link' %>
+			</td>
+			<td class="trainer-show-item-description"><%= item.description %></td>
+			<td class="trainer-show-item-price">￥<%= item.price %></td>
+			<td class="order-show-item-quantity"><%= quantity %>個</td>
+			<% unless sold_out? item %>
+				<td class="trainer-show-item-stock"><%= item.stock %></td>
+			<% else %>
+				<td class="trainer-show-item-soldout">完売!</td>
+			<% end %>
+    	</tr>
+	<% end %>
+	</table>
+</div>

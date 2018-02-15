@@ -37,6 +37,7 @@
 		<th>住所２</th>
 		<th>電話番号</th>
 		<th>支払い状況</th>
+		<th>オーダー<br>確認</th>
 	</tr>
 <% @orders.each do |order| %>
 	<tr>
@@ -52,6 +53,7 @@
 		<% else %>
 			<td class="order-already">入金済み</td>
 		<% end %>
+		<td class="order-show-link"><%= link_to '確認', order_path(order.id) %></td>
 	</tr> 
 <% end %>
 </table>
