@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 	default_scope -> {order(created_at: :desc)}
 	belongs_to :user
+	has_many :cart_items
 	validates :user_id, presence: true
 	validates :total_fee, presence: true
 	scope :search_create_date, ->(date) {

@@ -25,7 +25,7 @@
 	<% end %>
 	</div>
 <% else %>
-	<% if current_user.cart_items.first.is_purchase == true %>
+	<% if current_user.cart_items.present? && current_user.cart_items.first.is_purchase == true %>
 		<div class="personal-new-wrapper clearfix">
 			<div class="personal-new-personal-area">
 				<div class="personal-new-personal-info-area">

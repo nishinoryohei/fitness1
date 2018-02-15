@@ -45,6 +45,11 @@ class OrdersController < ApplicationController
     	flash[:success] = 'カードで支払いしました'
 		redirect_to root_path
 	end
+	def show
+		@order = Order.find(params[:id])
+		@quantitys = @order.cart_items.map(&:quantity)
+		@order_items = @order.cart_items.map{|f| f.item}
+	end
 	private
 	def create_order_params status
 		total_fee = user_item_total_fee current_user
@@ -53,6 +58,7 @@ class OrdersController < ApplicationController
 	def order_item_purchased user
  		user.cart_items.map{|f| 
  			if f.is_purchase == true
+ 				f.order_id = @order.id
  				f.update( is_purchase: false)
  			end
  		}

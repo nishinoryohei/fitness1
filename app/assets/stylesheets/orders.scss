@@ -22,10 +22,10 @@
 	text-align: center;
 } 
 .order-index-city{
-	width: 18%;
+	width: 13%;
 }
 .order-index-address{
-	width: 18%
+	width: 15%
 }
 .order-index-tel{
 	width: 10%;
@@ -43,10 +43,21 @@
 .order-already{
 	color: green;
 }
+.order-show-link{
+	width: 7%;
+}
 .order-search-area{
 	padding: 20px 0;
 }
 .order-search-form-area{
 	display: inline-block;
 	padding: 0 10px;
+}
+.order-show-area{
+	width: 80%;
+	margin: 0 auto;
+}
+.order-show-item-quantity{
+	width: 7%;
+	text-align: center;
 }
